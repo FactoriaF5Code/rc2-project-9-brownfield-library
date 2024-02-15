@@ -19,7 +19,7 @@ public class BookController {
     }
 
     @GetMapping("/api/books")
-    public BookSearchResponse searchBooks(@RequestParam(name = "q") String query) {
+    public BookSearchResponse searchBooks(@RequestParam(name = "q", required = true) String query) {
         var bookResults = bookSearch.searchBooks(query).stream()
                 .map(book -> new BookResponse(book.getTitle(), book.getAuthor()))
                 .collect(Collectors.toList());

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { searchBook } from "../services/BookService";
+import { BookResult } from "./BookResult";
 
 export const BookSearch = () => {
 
@@ -6,8 +8,7 @@ export const BookSearch = () => {
     const [results, setResults] = useState([]);
 
     const search = () => {
-        fetch(`http://localhost:8080/api/books?q=${query}`)
-            .then(response => response.json())
+        searchBook(query)
             .then(body => setResults(body.results));
     }
 
@@ -23,9 +24,8 @@ export const BookSearch = () => {
                 <button onClick={search}>Buscar</button>
             </menu>
             <main>
-                { results.map( r => <p>{r.title}</p>)}
+                {results.map((r,key) => <BookResult key={key} {...r} />)}
             </main>
         </section>
-
     );
 }
