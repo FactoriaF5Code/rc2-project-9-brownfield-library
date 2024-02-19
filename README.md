@@ -17,3 +17,11 @@ See the [Spring Boot Maven Plugin Documentation](https://docs.spring.io/spring-b
 ```
 . ./setup.sh
 ```
+
+
+### TODO: problems found
+
+- [] Dockerfile should be building the prod version of the app
+- [] Web client should use relative url
+- [] Add the DATABASE_URL secret to the application properties for prod
+- 
