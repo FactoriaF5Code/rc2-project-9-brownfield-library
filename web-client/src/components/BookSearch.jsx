@@ -23,7 +23,7 @@ export const BookSearch = () => {
             <menu>
                 <input
                     type="search"
-                    placeholder="Busca libros por título"
+                    placeholder="Pepinillos en vinagre"
                     onChange={e => setQuery(e.target.value)}
                     value={query}
                 />
