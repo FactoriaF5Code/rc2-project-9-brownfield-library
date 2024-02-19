@@ -3,6 +3,7 @@ FROM maven:3.8.4-openjdk-17 as build
 
 # Copy the project files to the container
 COPY src /home/app/src
+COPY web-client /home/app/web-client
 COPY pom.xml /home/app
 
 # Build the application
