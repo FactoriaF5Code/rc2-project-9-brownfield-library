@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { searchBook } from "../services/BookService";
 import { BookResult } from "./BookResult";
+import "./BookSearch.css";
 
 export const BookSearch = () => {
 
@@ -10,6 +11,11 @@ export const BookSearch = () => {
     const search = () => {
         searchBook(query)
             .then(body => setResults(body.results));
+    }
+
+    const clear = () => {
+        setResults([]);
+        setQuery("");
     }
 
     return (
@@ -22,9 +28,13 @@ export const BookSearch = () => {
                     value={query}
                 />
                 <button onClick={search}>Buscar</button>
+                {results.length > 0 &&
+                    <span className="clearButton" onClick={clear} >
+                        Limpiar resultado
+                    </span>}
             </menu>
             <main>
-                {results.map((r,key) => <BookResult key={key} {...r} />)}
+                {results.map((r, key) => <BookResult key={key} {...r} />)}
             </main>
         </section>
     );
