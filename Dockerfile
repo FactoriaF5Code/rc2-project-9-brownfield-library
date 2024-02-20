@@ -7,7 +7,7 @@ COPY web-client /home/app/web-client
 COPY pom.xml /home/app
 
 # Build the application
-RUN mvn -f /home/app/pom.xml clean package -DskipTests
+RUN mvn -f /home/app/pom.xml clean package -DskipTests -Dspring.profiles.active=prod
 
 # Stage 2: Create the final Docker image
 FROM openjdk:17-slim
