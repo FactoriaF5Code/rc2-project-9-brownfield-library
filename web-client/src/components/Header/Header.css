@@ -1,0 +1,42 @@
+header {
+    background-color: var(--color-mint)!important;
+    padding:40px 60px;
+}
+
+header img{
+    max-width: 300px;
+    margin-bottom: 1.5rem;
+}
+
+header h1{
+    color: var(--color-darkgreen);
+    font-size: 14px;
+    font-weight: 400;
+}header {
+    background-color: var(--color-mint)!important;
+    padding:40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img{
+    max-width: 300px;
+    margin-bottom: 1.5rem;
+}
+
+header h1{
+    color: var(--color-darkgreen);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.backButton {
+    color: var(--color-darkgreen);
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+
+.backButton:hover{
+    color:var(--color-green);
+}

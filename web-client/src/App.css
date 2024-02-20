@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    list-style: none;
+    text-decoration: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+:root {
+    --font-family: "Ubuntu", sans-serif;
+    --color-darkgreen: #075B39;
+    --color-green: #11A468;
+    --color-lightgreen: #47C234;
+    --color-mint: #DCE8DA;
+    --color-grey: #8B8B8B;
+    --color-white: #FFFFFF;
+}
+
+body{
+    background-image: url(/src/assets/background-tile.svg);
+    background-size: 150px;
+}

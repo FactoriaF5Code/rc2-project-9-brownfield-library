@@ -1,0 +1,58 @@
+.table-container{
+    width: 90rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 3rem !important;
+}
+.table-cell,
+.table-cell-header {
+  font-size: 1.8rem !important;
+  color: rgba(139, 139, 139, 1) !important;
+}
+
+.table-cell-header {
+  font-weight: bold !important;
+}
+
+.table-cell {
+  font-weight: lighter !important;
+}
+
+.available button {
+  background-color: rgba(17, 164, 104, 1); 
+  color: rgba(220, 232, 218, 1) !important; 
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.not-available button {
+  border: 0.2rem solid rgba(194, 52, 86, 1) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.5rem;
+  background-color: white !important;
+  color: rgba(194, 52, 86, 1) !important;
+}
+
+.status-container {
+  display: flex; 
+  align-items: center; 
+}
+
+.status-circle {
+  width: 1.5rem; 
+  height: 1.5rem; 
+  border-radius: 50%;
+  margin-right: 0.5rem; 
+}
+
+.available .status-circle {
+  background-color: rgba(71, 194, 52, 1); 
+}
+
+.not-available .status-circle {
+  background-color: rgba(194, 52, 86, 1); 
+}
+
+
