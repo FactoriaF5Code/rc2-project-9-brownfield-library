@@ -17,21 +17,19 @@ public class Book {
     private String isbn;
     @Column(name = "publication_year")
     private String year;
+    private Boolean available;
 
     public Book() {
     }
 
-    
-
-    public Book(UUID id, String title, String author, String isbn, String year) {
+    public Book(UUID id, String title, String author, String isbn, String year, Boolean available) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.isbn = isbn;
         this.year = year;
+        this.available = available;
     }
-
-
 
     public UUID getId() {
         return id;
@@ -71,6 +69,14 @@ public class Book {
 
     public void setYear(String year) {
         this.year = year;
+    }
+
+    public Boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 
 }

@@ -21,7 +21,14 @@ public class BookController {
     @GetMapping("/api/books")
     public BookSearchResponse searchBooks(@RequestParam(name = "q", required = true) String query) {
         var bookResults = bookSearch.searchBooks(query).stream()
-                .map(book -> new BookResponse(book.getTitle(), book.getAuthor()))
+                .map(book -> new BookResponse(
+                    book.getId().toString(),   
+                    book.getIsbn(),
+                    book.getTitle(), 
+                    book.getAuthor(),
+                    book.getYear(),
+                    book.isAvailable()
+                ))
                 .collect(Collectors.toList());
         return new BookSearchResponse(bookResults);
     }
