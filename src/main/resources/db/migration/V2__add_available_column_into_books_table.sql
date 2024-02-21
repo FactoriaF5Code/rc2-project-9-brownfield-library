@@ -1,1 +1,1 @@
-ALTER TABLE books ADD available BOOLEAN;
+ALTER TABLE books ADD available BOOLEAN DEFAULT true;

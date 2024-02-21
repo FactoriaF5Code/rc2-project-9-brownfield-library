@@ -5,7 +5,7 @@ export class BookService {
 
     async searchBooks(query) {
         return axios.get(`${getApiHost()}/api/books?q=${query}`)
-            .then(response => response.data);
+            .then(response => response.data.results);
     }
 
 }

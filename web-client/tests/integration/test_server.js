@@ -6,8 +6,8 @@ import { getApiHost } from "../../src/middleware/context/utils";
 
 const handlers = [
     http.get(`${getApiHost()}/api/books?q=Mano`, () => {
-        return HttpResponse.json(
-            [
+        return HttpResponse.json({
+            results: [
                 {
                     id: 1,
                     author: "Ursula K. Leguin",
@@ -16,7 +16,7 @@ const handlers = [
                     available: true
                 }
             ]
-        );
+        });
     })
 ];
 

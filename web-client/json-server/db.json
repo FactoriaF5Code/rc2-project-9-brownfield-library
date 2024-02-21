@@ -1,39 +1,41 @@
 {
-    "books": [
-        {
-            "id": 1,
-            "isbn": "978-1555976712",
-            "title": "La ciudad de las bestias",
-            "author": "Isabel Allende",
-            "available": true
-        },
-        {
-            "id": 2,
-            "isbn": "978-0061120091",
-            "title": "Orgullo y prejuicio",
-            "author": "Jane Austen",
-            "available": true
-        },
-        {
-            "id": 3,
-            "isbn": "978-0143039976",
-            "title": "Jane Eyre",
-            "author": "Charlotte Brontë",
-            "available": true
-        },
-        {
-            "id": 4,
-            "isbn": "978-0380015399",
-            "title": "Yo sé por qué canta el pájaro enjaulado",
-            "author": "Maya Angelou",
-            "available": true
-        },
-        {
-            "id": 5,
-            "isbn": "978-0679785897",
-            "title": "El cuento de la criada",
-            "author": "Margaret Atwood",
-            "available": true
-        }
-    ]
+    "books": {
+        "results": [
+            {
+                "id": 1,
+                "isbn": "978-1555976712",
+                "title": "La ciudad de las bestias",
+                "author": "Isabel Allende",
+                "available": true
+            },
+            {
+                "id": 2,
+                "isbn": "978-0061120091",
+                "title": "Orgullo y prejuicio",
+                "author": "Jane Austen",
+                "available": true
+            },
+            {
+                "id": 3,
+                "isbn": "978-0143039976",
+                "title": "Jane Eyre",
+                "author": "Charlotte Brontë",
+                "available": true
+            },
+            {
+                "id": 4,
+                "isbn": "978-0380015399",
+                "title": "Yo sé por qué canta el pájaro enjaulado",
+                "author": "Maya Angelou",
+                "available": true
+            },
+            {
+                "id": 5,
+                "isbn": "978-0679785897",
+                "title": "El cuento de la criada",
+                "author": "Margaret Atwood",
+                "available": true
+            }
+        ]
+    }
 }
