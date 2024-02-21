@@ -25,8 +25,6 @@ See the [Spring Boot Maven Plugin Documentation](https://docs.spring.io/spring-b
 - [] Web client should use relative url
 - [] Add the DATABASE_URL secret to the application properties for prod
   
-
-
   We need to implement: 
 
   GET /books with query parameter q

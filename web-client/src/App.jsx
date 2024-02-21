@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import './App.css'
 import { AppRouter } from './router/AppRouter'
 import { DataMembersProvider } from "./context/DataMembers";
@@ -45,19 +44,19 @@ function App() {
     fetchDataFromDatabase();
   }, [activeButton]);
 
-  
+
   return (
     <>
-    <DataMembersProvider>
-      <AppRouter 
-      searchTerm={searchTerm}
-      setSearchResults={setSearchResults}
-      activeButton={activeButton}
-      handleButtonChange={handleButtonChange}
-      setSearchTerm={setSearchTerm}
-      searchResults={searchResults}
-      />
-    </DataMembersProvider>
+      <DataMembersProvider>
+        <AppRouter
+          searchTerm={searchTerm}
+          setSearchResults={setSearchResults}
+          activeButton={activeButton}
+          handleButtonChange={handleButtonChange}
+          setSearchTerm={setSearchTerm}
+          searchResults={searchResults}
+        />
+      </DataMembersProvider>
     </>
   )
 }
