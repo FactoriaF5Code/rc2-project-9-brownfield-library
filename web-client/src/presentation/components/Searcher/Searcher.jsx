@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import FixedHeaderTable from '../Table/Table';
 import "../Table/Table.css";
+import searchIcon from "../../assets/searchIcon.svg";
 
 export const Searcher = ({
   searchTerm,
@@ -85,7 +86,7 @@ export const Searcher = ({
             />
             <button type="submit" className="searchContainer__Field-Button">
               {/* Utiliza type="submit" para el botón */}
-              <img src="/src/assets/searchIcon.svg" alt="búsqueda icono" />
+              <img src={searchIcon} alt="búsqueda icono" />
             </button>
           </div>
         </form>
