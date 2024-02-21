@@ -5,10 +5,10 @@ import App from "../../src/App";
 import "./test_server"
 
 
-test("The main page shows the catalog view", () => {
+test("The main page shows the book search view", () => {
     render(<App />);
 
-    const searchBar = screen.getByPlaceholderText(/Busca libros por título/i);
+    const searchBar = screen.getByPlaceholderText(/Búsqueda de libro por título, autor o ISBN/i);
 
     expect(searchBar).toBeInTheDocument();
 
@@ -16,10 +16,10 @@ test("The main page shows the catalog view", () => {
 });
 
 
-test("the page shows search results", async () => {
+test("we can search for a book", async () => { 
     render(<App />);
-    const searchBar = screen.getByPlaceholderText(/Busca libros por título/i);
-    const button = screen.getByText(/Buscar/i);
+    const searchBar = screen.getByPlaceholderText(/Búsqueda de libro por título, autor o ISBN/i);
+    const button = screen.getByAltText(/búsqueda icono/i);
 
     await userEvent.type(searchBar, "Mano");
     userEvent.click(button);
