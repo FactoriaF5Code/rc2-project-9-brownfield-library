@@ -1,7 +1,7 @@
 import "./Header.css";
 import logo from "../../assets/greenfield-logo.png";
-import { NewMemberButton } from "../NewMemberButton/NewMemberButton";
 import { Link } from "react-router-dom";
+import { NewBookButton } from "../NewBookButton/NewBookButton";
 
 export const Header = () => {
   return (
@@ -13,7 +13,7 @@ export const Header = () => {
           </Link>
           <h1>Software de gestión de bibliotecas</h1>
         </div>
-        <NewMemberButton />
+        <NewBookButton />
       </header>
     </>
   );

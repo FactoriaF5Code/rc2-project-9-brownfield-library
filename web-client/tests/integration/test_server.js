@@ -17,6 +17,14 @@ const handlers = [
                 }
             ]
         });
+    }),
+    http.post(`${getApiHost()}/api/books`, async ({request}) => {
+        
+        const body = await request.json();
+
+        return HttpResponse.json({
+            msg: `Book ${body.id} saved successfully`
+        });
     })
 ];
 

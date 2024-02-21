@@ -1,27 +1,16 @@
 /* eslint-disable react/prop-types */
-import { Home } from "../../presentation/pages/Home/Home"
 import { RHome } from "../../presentation/pages/Home/RHome"
-import { Lending } from "../../presentation/pages/Lending/Lending"
-import { LendingOk } from "../../presentation/pages/Lending/LendingOk"
-import { NewMember } from "../../presentation/pages/NewMember/NewMember"
-import { NewMemberOk } from "../../presentation/pages/NewMember/NewMemberOk"
-import { ReturnOk } from "../../presentation/pages/ReturnOk/ReturnOk"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { NewBook } from '../../presentation/pages/NewBook/NewBook';
 
-export const AppRouter = ({
-  searchTerm,
-  setSearchResults,
-  activeButton,
-  handleButtonChange,
-  setSearchTerm,
-  searchResults
-}) => {
+export const AppRouter = () => {
   return (
-    
+
     <BrowserRouter>
       <Routes>
         {/* home / book search */}
         <Route path="/" element={<RHome />} />
+        <Route path="/books/new" element={<NewBook />} />
         {/* member search */}
         {/* add member */}
         {/* add book */}

@@ -35,7 +35,7 @@ export const BookTable = ({ books }) => {
                   <TableCell className="table-cell">{isbn}</TableCell>
                   <TableCell className="table-cell">{title}</TableCell>
                   <TableCell className="table-cell">{author}</TableCell>
-                  {/* REFACTOR: this cell into separate component */}
+                  {/* SMELL/POSSIBLE REFACTOR: this cell into separate component */}
                   <TableCell className={`table-cell ${available ? "available" : "not-available"}`}>
                     <div className="status-container">
                       <div className={`status-circle ${available ? "available" : "not-available"}`}></div>

@@ -1,0 +1,15 @@
+.btn-new-book {
+    width: 23rem;
+    height: 4.5rem;
+    background-color: var(--color-green);
+    color: var(--color-mint);
+    text-transform:uppercase;
+    border-radius: .5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.btn-new-book:hover {
+    background-color: var(--color-lightgreen);
+}

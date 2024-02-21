@@ -8,4 +8,9 @@ export class BookService {
             .then(response => response.data.results);
     }
 
+    async createBook(bookRequest) {
+        return axios.post(`${getApiHost()}/api/books`, bookRequest)
+            .then(response => response.data.msg)
+    }
+
 }
