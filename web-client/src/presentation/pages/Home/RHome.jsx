@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Header } from "../../components/Header/Header"
-import { Searcher } from "../../components/Searcher/Searcher"
+import { BookSearcher } from "../../components/Searcher/BookSearcher";
 import "../../components/Table/Table.css";
 
 
@@ -15,14 +15,7 @@ export const RHome = ({
   return (
     <>
       <Header />
-      <Searcher
-        searchTerm={searchTerm}
-        setSearchResults={setSearchResults}
-        activeButton={activeButton}
-        handleButtonChange={handleButtonChange}
-        setSearchTerm={setSearchTerm}
-        searchResults={searchResults}
-      />
+      <BookSearcher />
     </>
   )
 }
