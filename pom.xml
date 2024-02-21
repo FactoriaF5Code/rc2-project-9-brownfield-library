@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>org.leguin</groupId>
 	<artifactId>backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>backend</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -59,6 +59,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<profiles>
+						<profile>${activated.profile}</profile>
+					</profiles>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
@@ -94,6 +99,15 @@
 							<arguments>run build</arguments>
 						</configuration>
 					</execution>
+					<execution>
+						<id>npm test</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>test</arguments>
+						</configuration>
+					</execution>					
 				</executions>
 			</plugin>
 			<plugin>
@@ -121,5 +135,26 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>test</id>
+			<properties>
+				<activated.profile>test</activated.profile>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<activated.profile>dev</activated.profile>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<activated.profile>prod</activated.profile>
+			</properties>
+		</profile>
+	</profiles>
+
 
 </project>
