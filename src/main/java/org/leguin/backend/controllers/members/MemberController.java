@@ -7,7 +7,6 @@ import java.util.UUID;
 import org.leguin.backend.persistence.members.Member;
 import org.leguin.backend.persistence.members.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
