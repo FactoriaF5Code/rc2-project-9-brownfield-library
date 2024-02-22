@@ -23,9 +23,8 @@ export const BookSearcher = () => {
   };
 
   return (
-    <>
-      <Link to="/curators/books/new"><button className="btn-access">New Book</button></Link>
-      <section className="searchContainer">
+    <div style={{display: "flex", width: "100%", flexDirection: "column", alignItems: "center"}}>
+      <section className="searchContainer" style={{display: "flex", gap: "20px"}}>
         <form onSubmit={handleSearch}>
           <div className='searchContainer__Field'>
             <BookSearchIcon />
@@ -42,9 +41,10 @@ export const BookSearcher = () => {
             </button>
             {error && <p>{error}</p>}
           </div>
-        </form>
+        </form><Link to="/curators/books/new"><button className="btn-access">New Book</button></Link>
       </section>
+      
       <BookTable books={books} />
-    </>
+    </div>
   );
 };
