@@ -6,15 +6,13 @@ import { BookSearchIcon } from './BookSearchIcon';
 import BookTable from '../Table/BookTable';
 import { useBookDataContext } from '../../../middleware/context/BookData';
 import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
 
 export const BookSearcher = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState(null);
   const [books, setBooks] = useState([]);
   const { searchBooks } = useBookDataContext();
-  const location = useLocation();
-  const msg = location.state?.msg;
+  
     
   const handleSearch = async (event) => {
     event.preventDefault(); // Evita que se envíe el formulario y recargue la página
