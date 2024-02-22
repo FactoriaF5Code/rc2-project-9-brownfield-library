@@ -6,9 +6,9 @@ export const CoverPage = () => {
     return (
         <>
             <Header />
-            <div >
+            <div className="btn-access-group">
                 <Link to="/members/home"> <button className="btn-access">Member access</button></Link>
-                <Link to="/curators/home"> <button className="btn-access">Curator access</button></Link>
+                <Link to="/curators/home"> <button className="btn-access blue">Curator access</button></Link>
             </div>
         </>
     )

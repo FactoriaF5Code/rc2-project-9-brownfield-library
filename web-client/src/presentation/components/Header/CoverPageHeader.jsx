@@ -1,7 +1,6 @@
 import "./Header.css";
 import logo from "../../assets/greenfield-logo.png";
 import { Link } from "react-router-dom";
-import { NewBookButton } from "../NewBookButton/NewBookButton";
 
 export const CoverPageHeader = () => {
   return (
@@ -11,7 +10,7 @@ export const CoverPageHeader = () => {
           <Link to="/">
             <img src={logo} alt="Greenfield Library logo" />
           </Link>
-          <h1>Software de gestión de bibliotecas</h1>
+          <h1>Powered by Brownfield MegaCorporation Inc</h1>
         </div>
       </header>
     </>

@@ -5,7 +5,7 @@ import { BookSearcher } from "../../components/Searcher/BookSearcher";
 import "../../components/Table/Table.css";
 
 
-export const RHome = () => {
+export const CuratorHome = () => {
 
   const location = useLocation();
   const message = location.state?.msg; 
