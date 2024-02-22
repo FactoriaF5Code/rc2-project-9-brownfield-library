@@ -7,8 +7,8 @@ export const CoverPage = () => {
         <>
             <Header />
             <div className="btn-access-group">
-                <Link to="/members/home"> <button className="btn-access">Member access</button></Link>
-                <Link to="/curators/home"> <button className="btn-access blue">Curator access</button></Link>
+                <Link to="/members"> <button className="btn-access">Member access</button></Link>
+                <Link to="/curators"> <button className="btn-access blue">Curator access</button></Link>
             </div>
         </>
     )
