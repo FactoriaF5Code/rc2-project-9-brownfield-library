@@ -8,6 +8,5 @@ export const CuratorHome = () => {
       <Link to="members"> <button className="btn-access blue">Members</button></Link>
       <Link to="loans"> <button className="btn-access blue">Loans</button></Link>
     </div>
-
   )
 }

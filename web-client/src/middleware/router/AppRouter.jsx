@@ -6,13 +6,13 @@ import { MemberHome } from '../../presentation/pages/Home/MemberHome';
 import { BookSearcher } from '../../presentation/components/Searcher/BookSearcher';
 import { CuratorPortal } from '../../presentation/pages/curator_portal/CuratorPortal';
 import { MemberPortal } from '../../presentation/pages/member_portal/MemberPortal';
-import { BookDetailsPage } from '../../presentation/pages/book_details/BookDetailPage';
 import { CurrentRouterComponent } from './CurrentRouterComponent';
 import CuratorLogin from '../../presentation/pages/login/CuratorLogin';
 import PrivateRoute from './PrivateRoute';
 import { Logout } from './Logout';
 import { NewBookForm } from '../../presentation/components/NewBookForm/NewBookForm';
 import { developmentModeOn } from '../context/utils';
+import MemberLogin from '../../presentation/pages/login/MemberLogin';
 
 export const AppRouter = () => {
   return (
@@ -27,7 +27,7 @@ export const AppRouter = () => {
             <Route index element={<CuratorHome />} />
             <Route path="books" element={<BookSearcher />} />
             <Route path="books/new" element={<NewBookForm />} />
-            <Route path="books/:id" element={<BookDetailsPage />} />
+            {/* <Route path="books/:id" element={<BookDetailsPage />} /> */}
           </Route>
           {/* nuevo socio */}
           {/* editar socio */}
@@ -35,12 +35,16 @@ export const AppRouter = () => {
           {/* nuevo préstamo */}
         </Route>
         <Route path="/members/" element={<MemberPortal />}>
-          <Route index element={<MemberHome />} />
-          {/* <Route path="/login" element={<MemberLogin />} /> */}
-          <Route path="/members/books" element={<BookSearcher />} />
-          <Route path="/members/books/:id" element={<BookDetailsPage />} />
-          {/* mis préstamos */}
-          {/* mis reservas */}
+          <Route path="login" element={<MemberLogin />} />
+          <Route path="logout" element={<Logout />} />
+          <Route element={<PrivateRoute loginPath="/members/login" />}>
+            <Route index element={<MemberHome />} />
+            <Route path="/members/books" element={<BookSearcher />} />
+            {/* <Route path="/members/books/:id" element={<BookDetailsPage />} /> */}
+            {/* mis préstamos */}
+            {/* mis reservas */}
+          </Route>
+
         </Route>
         {/* member search */}
         {/* add member */}
