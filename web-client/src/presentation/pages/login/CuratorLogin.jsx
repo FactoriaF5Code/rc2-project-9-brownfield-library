@@ -14,36 +14,35 @@ const CuratorLogin = () => {
   // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-    login({email: email, password: password});
-    
+
+    login({ email: email, password: password });
+
     setEmail('');
     setPassword('');
     navigate("/curators", { state: { msg: "Login successful" } });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
+    <form onSubmit={handleSubmit} className="Form">
+
+      <label htmlFor="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+
+      <label htmlFor="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+
       <button type="submit">Login</button>
     </form>
   );

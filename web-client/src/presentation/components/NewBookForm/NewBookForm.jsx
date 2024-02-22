@@ -25,7 +25,7 @@ export const NewBookForm = () => {
   const navigate = useNavigate()
 
   const [newBook, setNewBook] = useState(initialValues);
-
+  const [error, setError] = useState(null);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewBook({ ...newBook, [name]: value });
@@ -35,9 +35,9 @@ export const NewBookForm = () => {
     e.preventDefault();
     try {
       const response = await createBook(newBook); // Assuming createBook is an async function
-      navigate("/", { state: { msg: response } });
+      navigate(-1, { state: { msg: response } });
     } catch (err) {
-      navigate("/", { state: { msg: `An error occurred: ${err}` } });
+      setError(err);
     }
   }
 
@@ -59,6 +59,7 @@ export const NewBookForm = () => {
         <button className="formContainer__button" type="submit">
           Save
         </button>
+        {error && <p>{`An error occurred: ${error}`}</p>}
       </form>
     </div>
   );

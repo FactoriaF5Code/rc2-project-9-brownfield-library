@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { NewBook } from '../../presentation/pages/NewBook/NewBook';
 import { CoverPage } from '../../presentation/pages/CoverPage/CoverPage';
 import { CuratorHome } from '../../presentation/pages/Home/CuratorHome';
 import { MemberHome } from '../../presentation/pages/Home/MemberHome';
@@ -12,6 +11,7 @@ import CuratorLogin from '../../presentation/pages/login/CuratorLogin';
 import PrivateRoute from './PrivateRoute';
 import { useLocation } from 'react-router-dom';
 import { Logout } from './Logout';
+import { NewBookForm } from '../../presentation/components/NewBookForm/NewBookForm';
 
 const CurrentRouterComponent = () => {
   const location = useLocation();
@@ -31,7 +31,7 @@ export const AppRouter = () => {
           <Route element={<PrivateRoute loginPath="/curators/login" />}>
             <Route index element={<CuratorHome />} />
             <Route path="books" element={<BookSearcher />} />
-            <Route path="books/new" element={<NewBook />} />
+            <Route path="books/new" element={<NewBookForm />} />
             <Route path="books/:id" element={<BookDetailsPage />} />
           </Route>
           {/* nuevo socio */}

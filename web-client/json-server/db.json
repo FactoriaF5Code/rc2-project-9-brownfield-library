@@ -1,9 +1,14 @@
 {
   "books": {
-    "id": "bc035e54-00fe-4d35-8acf-0c54a528fa8e",
-    "title": "lakdjg",
-    "author": "aldksgj",
-    "year": "aldkjg",
-    "isbn": "lasg"
+    "results": [
+      {
+        "id": "68ec1461-7914-4ac0-9600-1c6921cf078d",
+        "title": "Un libro de ejemplo",
+        "author": "Autor de ejemplo",
+        "year": "1999",
+        "isbn": "9827365",
+        "available": true
+      }
+    ]
   }
 }
