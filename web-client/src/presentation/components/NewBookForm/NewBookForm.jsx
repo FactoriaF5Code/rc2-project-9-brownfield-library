@@ -34,7 +34,7 @@ export const NewBookForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await createBook(newBook); // Assuming createBook is an async function
+      const response = await createBook(newBook); 
       navigate(-1, { state: { msg: response } });
     } catch (err) {
       setError(err);

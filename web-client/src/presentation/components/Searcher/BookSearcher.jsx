@@ -8,6 +8,8 @@ import { useBookDataContext } from '../../../middleware/context/BookData';
 import { Link } from 'react-router-dom';
 
 
+
+
 export const BookSearcher = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState(null);
@@ -43,6 +45,7 @@ export const BookSearcher = () => {
         </form>
       </section>
       {error && <p>{error}</p>}
+      {message && <p>{message}</p>}
       <BookTable books={books} />
     </>
   );
