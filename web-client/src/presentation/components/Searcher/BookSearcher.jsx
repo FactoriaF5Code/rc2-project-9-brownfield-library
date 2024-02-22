@@ -42,11 +42,10 @@ export const BookSearcher = () => {
               {/* Utiliza type="submit" para el botón */}
               <img src={searchIcon} alt="búsqueda icono" />
             </button>
+            {error && <p>{error}</p>}
           </div>
         </form>
       </section>
-      {error && <p>{error}</p>}
-      {msg && <p>{msg}</p>}
       <BookTable books={books} />
     </>
   );

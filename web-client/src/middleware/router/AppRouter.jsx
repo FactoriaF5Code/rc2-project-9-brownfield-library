@@ -7,20 +7,12 @@ import { BookSearcher } from '../../presentation/components/Searcher/BookSearche
 import { CuratorPortal } from '../../presentation/pages/curator_portal/CuratorPortal';
 import { MemberPortal } from '../../presentation/pages/member_portal/MemberPortal';
 import { BookDetailsPage } from '../../presentation/pages/book_details/BookDetailPage';
+import { CurrentRouterComponent } from './CurrentRouterComponent';
 import CuratorLogin from '../../presentation/pages/login/CuratorLogin';
 import PrivateRoute from './PrivateRoute';
-import { useLocation } from 'react-router-dom';
 import { Logout } from './Logout';
 import { NewBookForm } from '../../presentation/components/NewBookForm/NewBookForm';
-
-const CurrentRouterComponent = () => {
-  const location = useLocation();
-  return <div>
-    Current route is: {location.pathname}
-    { location.state && <span>{`State is ${location.state}`}</span>}
-  </div>;
-
-}
+import { developmentModeOn } from '../context/utils';
 
 export const AppRouter = () => {
   return (
@@ -69,7 +61,7 @@ export const AppRouter = () => {
           <Route path='/nuevo-socio-ok/:idMembers' element={<NewMemberOk />} />
           <Route path='/devolucion-ok/:idBooks' element={<ReturnOk />} /> */}
       </Routes>
-      <CurrentRouterComponent />
+      {developmentModeOn && <CurrentRouterComponent />}
     </BrowserRouter>
   );
 }
