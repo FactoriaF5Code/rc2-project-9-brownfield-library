@@ -18,8 +18,8 @@ export const CuratorHeader = () => {
         </div>
         <NewBookButton />
         {userLoggedIn ?
-          <button>Logout</button> :
-          <button>Login</button>
+          <Link to="/curators/logout"><button>Logout</button></Link> :
+          <Link to="/curators/login"><button>Login</button></Link>
         }
       </header>
     </>

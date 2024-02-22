@@ -8,7 +8,7 @@ const CuratorLogin = () => {
   const [password, setPassword] = useState('');
 
   const { login } = useAuthenticationContext();
-  const { navigate } = useNavigate();
+  const navigate = useNavigate();
 
 
   // Handle form submission

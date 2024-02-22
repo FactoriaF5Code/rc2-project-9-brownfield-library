@@ -10,6 +10,14 @@ import { MemberPortal } from '../../presentation/pages/member_portal/MemberPorta
 import { BookDetailsPage } from '../../presentation/pages/book_details/BookDetailPage';
 import CuratorLogin from '../../presentation/pages/login/CuratorLogin';
 import PrivateRoute from './PrivateRoute';
+import { useLocation } from 'react-router-dom';
+import { Logout } from './Logout';
+
+const CurrentRouterComponent = () => {
+  const location = useLocation();
+  return <div>Current route is: {location.pathname}</div>;
+
+}
 
 export const AppRouter = () => {
   return (
@@ -19,6 +27,7 @@ export const AppRouter = () => {
         <Route path="/" element={<CoverPage />} />
         <Route path="/curators/" element={<CuratorPortal />}>
           <Route path="login" element={<CuratorLogin />} />
+          <Route path="logout" element={<Logout />} />
           <Route element={<PrivateRoute loginPath="/curators/login" />}>
             <Route index element={<CuratorHome />} />
             <Route path="books" element={<BookSearcher />} />
@@ -57,6 +66,7 @@ export const AppRouter = () => {
           <Route path='/nuevo-socio-ok/:idMembers' element={<NewMemberOk />} />
           <Route path='/devolucion-ok/:idBooks' element={<ReturnOk />} /> */}
       </Routes>
+      <CurrentRouterComponent />
     </BrowserRouter>
   );
 }
