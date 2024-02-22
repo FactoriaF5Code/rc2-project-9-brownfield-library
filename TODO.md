@@ -1,0 +1,13 @@
+- [ ] Diferentes portales para gestor de la biblioteca, socios
+- [ ] Buscar socio
+- [ ] Añadir préstamo
+  - [ ] El préstamo dura 30 días naturales
+- [ ] Ver préstamos de un libro
+  - [ ] Los socios sólo ven si un libro está prestado o no
+  - [ ] Los trabajadores (curators) pueden ver quién tiene un libro y cuándo se tiene que devolver
+- [ ] Los socios reciben un mail cuando se dan de alta
+- [ ] Los socios reciben un mail cuando queda 1 semana o 1 día para que se acabe el préstamo
+- [ ] Los socios reciben un mail cuando queda 1 semana o 1 día para que se acabe el préstamo
+- [ ] Los socios
+- [ ] Autenticación cutre
+- [ ] Añadir legacy!! 

@@ -2,6 +2,7 @@
 import { RHome } from "../../presentation/pages/Home/RHome"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { NewBook } from '../../presentation/pages/NewBook/NewBook';
+import { CoverPage } from '../../presentation/pages/CoverPage/CoverPage';
 
 export const AppRouter = () => {
   return (
@@ -9,7 +10,9 @@ export const AppRouter = () => {
     <BrowserRouter>
       <Routes>
         {/* home / book search */}
-        <Route path="/" element={<RHome />} />
+        <Route path="/" element={<CoverPage />} />
+        <Route path="/curators/home" element={<RHome />} />
+        <Route path="/members/home" element={<RHome />} />
         <Route path="/books/new" element={<NewBook />} />
         {/* member search */}
         {/* add member */}
