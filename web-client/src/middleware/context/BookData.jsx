@@ -24,5 +24,10 @@ export const BookDataProvider = ({ children }) => {
 };
 
 export const useBookDataContext = () => {
-  return useContext(BookDataContext);
+
+  const context = useContext(BookDataContext);
+  if (context === undefined) {
+    console.error('useBookDataContext must be used within a BookDataProvider');
+  }
+  return context;
 };

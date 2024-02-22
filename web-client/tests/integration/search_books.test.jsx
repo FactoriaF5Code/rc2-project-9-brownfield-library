@@ -1,12 +1,13 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { expect, test } from "vitest";
 import userEvent from "@testing-library/user-event";
-import App from "../../src/App";
 import "./test_server"
+import { BookSearcher } from "../../src/presentation/components/Searcher/BookSearcher";
+import { renderWithContext } from './test_utils';
 
 
-test("The main page shows the book search view", () => {
-    render(<App />);
+test("Search view", () => {
+    renderWithContext(<BookSearcher />);
 
     const searchBar = screen.getByPlaceholderText(/Búsqueda de libro por título, autor o ISBN/i);
 
@@ -16,8 +17,8 @@ test("The main page shows the book search view", () => {
 });
 
 
-test("we can search for a book", async () => { 
-    render(<App />);
+test("we can search for a book", async () => {
+    renderWithContext(<BookSearcher />);
     const searchBar = screen.getByPlaceholderText(/Búsqueda de libro por título, autor o ISBN/i);
     const button = screen.getByAltText(/búsqueda icono/i);
 
