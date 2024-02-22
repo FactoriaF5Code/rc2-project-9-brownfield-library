@@ -2,15 +2,18 @@ import './App.css'
 import { AppRouter } from './middleware/router/AppRouter';
 import { BookDataProvider } from './middleware/context/BookData';
 import { AuthenticationProvider } from './middleware/context/AuthenticationContext';
+import { MemberDataProvider } from './middleware/context/MemberDataContext';
 
 function App() {
 
   return (
     <>
       <AuthenticationProvider>
-        <BookDataProvider>
+        <MemberDataProvider>
+          <BookDataProvider>
             <AppRouter />
-        </BookDataProvider>
+          </BookDataProvider>
+        </MemberDataProvider>
       </AuthenticationProvider>
     </>
   )

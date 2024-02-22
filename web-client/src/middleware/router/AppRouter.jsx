@@ -13,6 +13,8 @@ import { Logout } from './Logout';
 import { NewBookForm } from '../../presentation/components/NewBookForm/NewBookForm';
 import { developmentModeOn } from '../context/utils';
 import MemberLogin from '../../presentation/pages/login/MemberLogin';
+import { MemberManager } from '../../presentation/pages/member_manager/MemberManager';
+import { EditMember } from "../../presentation/pages/member_manager/EditMember";
 
 export const AppRouter = () => {
   return (
@@ -28,6 +30,8 @@ export const AppRouter = () => {
             <Route path="books" element={<BookSearcher />} />
             <Route path="books/new" element={<NewBookForm />} />
             {/* <Route path="books/:id" element={<BookDetailsPage />} /> */}
+            <Route path="members" element={<MemberManager />} />
+            <Route path="members/new" element={<EditMember />} />            
           </Route>
           {/* nuevo socio */}
           {/* editar socio */}
