@@ -2,25 +2,17 @@ import { render, screen } from "@testing-library/react";
 import { expect, test } from "vitest";
 import userEvent from "@testing-library/user-event";
 import App from "../../src/App";
-import "./test_server"
+import "../test_server";
+import { fill } from "../test_utils";
 
-
-test("The main page shows a button to create a new book", () => {
+test("The curator page shows a button to create books", async () => {
     render(<App />);
 
-    const createBookbutton = screen.getByText(/New Book/i);
+    await loginAsCurator();
 
-    expect(createBookbutton).toBeInTheDocument();
-});
+    await userEvent.click(screen.getByText(/Book/));
 
-test("We can create a new book using the form", async () => {
-    async function fill(fieldName, text) {
-        await userEvent.type(screen.getByLabelText(fieldName), text)
-    }
-
-    render(<App />);
-
-    await userEvent.click(screen.getByText(/New Book/i));
+    await userEvent.click(screen.getByText(/New Book/));
 
     await fill("Title", "La Mano Izquierda de la Oscuridad");
     await fill("Author", "Ursula K. Leguin");
@@ -33,3 +25,11 @@ test("We can create a new book using the form", async () => {
 
     expect(successMsg).toBeInTheDocument();
 });
+
+async function loginAsCurator() {
+    await userEvent.click(screen.getByText("Curator access"));
+    await fill(/Email/, "severus@hogwarts.com");
+    await fill(/Password/, "voldemort4ever");
+    await userEvent.click(screen.getByText(/Login/));
+}
+

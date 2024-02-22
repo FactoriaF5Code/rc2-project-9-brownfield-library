@@ -1,9 +1,9 @@
 import { screen } from "@testing-library/react";
 import { expect, test } from "vitest";
 import userEvent from "@testing-library/user-event";
-import "./test_server"
+import "../test_server"
 import { BookSearcher } from "../../src/presentation/components/Searcher/BookSearcher";
-import { renderWithContext } from './test_utils';
+import { renderWithContext } from '../test_utils';
 
 
 test("Search view", () => {

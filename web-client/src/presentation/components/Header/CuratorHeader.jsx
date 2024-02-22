@@ -16,8 +16,8 @@ export const CuratorHeader = () => {
           <h1> Powered by © Brownfield MegaCorporation</h1>
         </div>
         {userLoggedIn ?
-          <Link to="/curators/logout"><button className="btn-access">Logout</button></Link> :
-          <Link to="/curators/login"><button className="btn-access">Login</button></Link>
+          <Link to="/curators/logout"><button className="btn-access">logout</button></Link> :
+          <Link to="/curators/login"><button className="btn-access">login</button></Link>
         }
       </header>
     </>

@@ -35,7 +35,8 @@ export const NewBookForm = () => {
     e.preventDefault();
     try {
       const response = await createBook(newBook); 
-      navigate(-1, { state: { msg: response } });
+      console.log("Book created and response is " + response);
+      navigate("/curators/books", { state: { msg: response } });
     } catch (err) {
       setError(err);
     }

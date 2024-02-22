@@ -15,7 +15,10 @@ import { NewBookForm } from '../../presentation/components/NewBookForm/NewBookFo
 
 const CurrentRouterComponent = () => {
   const location = useLocation();
-  return <div>Current route is: {location.pathname}</div>;
+  return <div>
+    Current route is: {location.pathname}
+    { location.state && <span>{`State is ${location.state}`}</span>}
+  </div>;
 
 }
 

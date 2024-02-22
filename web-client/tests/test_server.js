@@ -2,7 +2,7 @@ import { afterAll, beforeAll } from "vitest";
 
 import { HttpResponse, http } from "msw";
 import { setupServer } from "msw/node";
-import { getApiHost } from "../../src/middleware/context/utils";
+import { getApiHost } from "../src/middleware/context/utils";
 
 const handlers = [
     http.get(`${getApiHost()}/api/books?q=Mano`, () => {
