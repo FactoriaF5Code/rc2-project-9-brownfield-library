@@ -9,7 +9,7 @@ import { renderWithContext } from '../test_utils';
 test("Search view", () => {
     renderWithContext(<BookSearcher />);
 
-    const searchBar = screen.getByPlaceholderText(/Búsqueda de libro por título, autor o ISBN/i);
+    const searchBar = screen.getByPlaceholderText(/Búsqueda de libro por título/i);
 
     expect(searchBar).toBeInTheDocument();
 
@@ -19,7 +19,7 @@ test("Search view", () => {
 
 test("we can search for a book", async () => {
     renderWithContext(<BookSearcher />);
-    const searchBar = screen.getByPlaceholderText(/Búsqueda de libro por título, autor o ISBN/i);
+    const searchBar = screen.getByPlaceholderText(/Búsqueda de libro por título/i);
     const button = screen.getByAltText(/búsqueda icono/i);
 
     await userEvent.type(searchBar, "Mano");

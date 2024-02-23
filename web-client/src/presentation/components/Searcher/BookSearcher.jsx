@@ -31,7 +31,7 @@ export const BookSearcher = () => {
             <input
               type="search"
               className="searchContainer__Field-Input"
-              placeholder={"Búsqueda de libro por título, autor o ISBN"}
+              placeholder={"Búsqueda de libro por título"}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
