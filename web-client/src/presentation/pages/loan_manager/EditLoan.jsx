@@ -24,13 +24,18 @@ export const EditLoan = () => {
     const { createLoan } = useBookDataContext();
 
     const handleSubmit = async (e) => {
-        e.preventDefault;
-        const response = await createLoan({
-            id: id,
-            bookId: bookId,
-            memberId: memberId
-        });
-        navigate("/curators", { state: { msg: response } });
+        e.preventDefault();
+        try {
+            const response = await createLoan({
+                id: id,
+                bookId: bookId,
+                memberId: memberId
+            });
+            console.log("Book created and response is " + response);
+            navigate("/curators", { state: { msg: response } });
+        } catch (err) {
+            setError(err);
+        }
     }
 
     const loadBookOptions = (input) =>
