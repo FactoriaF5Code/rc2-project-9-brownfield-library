@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.leguin.backend.persistence.loans.Loan;
 import org.leguin.backend.persistence.loans.LoanRepository;
+import org.leguin.backend.services.BookAvailabilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,9 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoanController {
 
     private LoanRepository loanRepository;
+    private BookAvailabilityService bookAvailabilityService;
+    
 
-    public LoanController(@Autowired LoanRepository loanRepository) {
+    public LoanController(@Autowired LoanRepository loanRepository,
+            @Autowired BookAvailabilityService bookAvailabilityService) {
         this.loanRepository = loanRepository;
+        this.bookAvailabilityService = bookAvailabilityService;
     }
 
     @PostMapping
@@ -28,6 +33,8 @@ public class LoanController {
                 UUID.fromString(request.getMemberId()));
 
         loanRepository.save(loan);
+
+        bookAvailabilityService.setAsNotAvailable(UUID.fromString(request.getBookId()));
 
         return new CreateLoanResponse(request.getId());
     }
