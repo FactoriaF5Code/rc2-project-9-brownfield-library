@@ -1,6 +1,7 @@
 package org.leguin.backend.services;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.leguin.backend.persistence.Book;
 import org.leguin.backend.persistence.BookRepository;
@@ -18,6 +19,10 @@ public class BookSearchService {
 
     public List<Book> searchBooks(String query) {
         return repository.findByTitleContaining(query);
+    }
+
+    public boolean bookExists(String bookId) {
+        return repository.existsById(UUID.fromString(bookId));
     }
 
 }
