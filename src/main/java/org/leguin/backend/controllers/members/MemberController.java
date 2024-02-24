@@ -6,7 +6,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 import org.leguin.backend.persistence.members.Member;
 import org.leguin.backend.persistence.members.MemberRepository;
