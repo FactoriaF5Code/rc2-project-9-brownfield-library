@@ -32,18 +32,20 @@ public class SearchMemberTest {
         repository.saveAll(List.of(
                 new Member(UUID.fromString("a0ecb47e-9e0b-4c86-8d69-9a2f46146b15"),
                         "Juan",
-                        "Pérez",
+                        "López",
                         "123 Calle Principal, Ciudad",
                         "juan.perez@email.com",
-                        "1234567890"),
+                        "1234567890",
+                        "password"),
                 new Member(UUID.fromString("7d342190-146b-4eb4-a0a3-f694b026ae08"),
                         "Jose",
                         "Pérez",
                         "123 Calle Principal, Ciudad",
                         "jose.perez@email.com",
-                        "1234567890")));
+                        "1234567890",
+                        "password")));
 
-        api.perform(get("/api/members?q=Juan"))
+        api.perform(get("/api/members?q=López"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.results[*]", hasSize(1)))
                 .andExpect(jsonPath("$.results[0].firstName", equalTo("Juan")));

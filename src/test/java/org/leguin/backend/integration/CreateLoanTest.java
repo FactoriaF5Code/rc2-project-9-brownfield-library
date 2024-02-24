@@ -40,7 +40,8 @@ public class CreateLoanTest {
                         "Pérez",
                         "123 Calle Principal, Ciudad",
                         "juan.perez@email.com",
-                        "1234567890"));
+                        "1234567890",
+                        "password"));
 
         bookRepository.save(
                 new Book(UUID.fromString("c4a4e597-9aee-4b1e-92de-41d33224c6a1"),
@@ -55,8 +56,8 @@ public class CreateLoanTest {
                 .content("""
                         {
                             "id": "031ce36a-08a7-4cab-a8a8-30b48c28e979",
-                            "bookId": "d8e00915-eca8-4deb-bb41-7ee5b6feef04",
-                            "memberId": "d05229fe-7757-406e-885b-86d25c1ec294"
+                            "bookId": "c4a4e597-9aee-4b1e-92de-41d33224c6a1",
+                            "memberId": "a0ecb47e-9e0b-4c86-8d69-9a2f46146b15"
                         }
                         """))
                 .andExpect(status().isOk())
