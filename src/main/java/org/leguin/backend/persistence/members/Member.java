@@ -12,6 +12,7 @@ public class Member {
     @Id
     private UUID id;
     private String firstName;
+
     private String lastName;
     private String address;
     private String email;
@@ -27,6 +28,10 @@ public class Member {
         this.address = address;
         this.email = email;
         this.phone = phone;
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 
 }
