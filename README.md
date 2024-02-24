@@ -1,3 +1,51 @@
+# Brownfield Library
+
+> DISCLAIMER: This repository is an exercise to practice working with legacy code. Do not take it as a real project. It is not a real project.
+
+## Welcome
+
+This is the Brownfield library Monolith repository. It runs the library portal for both members and curators.
+
+## Developer Setup
+
+- Install the `setup.sh` script
+- Make sure you are using Java 17 and that you have Maven installed
+
+## Running the application
+
+To compile and run the application, do
+
+```
+mvn -Pdev clean install spring-boot:run
+```
+
+It will show the application running at `localhost:8080`
+
+## Frontend development
+
+### Running the `web-client` in development mode
+
+- If you run `npm run dev` from the `web-client` directory, it will automatically start running `json-server` at port 9001 and the react client at port 5173. 
+
+- **json-server configuration:** You will have to keep the files in `web-client/json-server` up to date if you want the web-client to work in standalone mode.
+
+### Running the frontend tests
+
+- We use `testing library` and `msw` to test components and the application. Use `npm test` to run the tests.
+- Make sure you keep the test server up to date when adding new tests.
+
+## Backend development
+
+### Database migration with Flyway
+
+The database schema is updated by using [Flyway migrations](https://docs.spring.io/spring-boot/docs/2.0.0.M5/reference/html/howto-database-initialization.html#howto-execute-flyway-database-migrations-on-startup). Everytime you need to update the schema, make sure you add and test the adecquate migration scripts.
+
+### Testing
+
+Run the tests with Maven by doing `mvn test`.
+
+
+
 ### How to run the Posgres Database with Docker
 
 ```
@@ -17,40 +65,3 @@ See the [Spring Boot Maven Plugin Documentation](https://docs.spring.io/spring-b
 ```
 . ./setup.sh
 ```
-
-
-### TODO: problems found
-
-- [] Dockerfile should be building the prod version of the app
-- [] Web client should use relative url
-- [] Add the DATABASE_URL secret to the application properties for prod
-  
-  We need to implement: 
-
-  GET /books with query parameter q
-  GET /books/:id
-  POST /members
-  GET /members/:id
-  POST /loans para crear un nuevo préstamo
-
-  Seguridad básica y almacenar el estado en el frontend.
-
-  Ideas
-    - Añadir bugs al repositorio
-      - Bug de inyección de dependencias (?)
-  
-```
-@Repository
-public class UserRepository {
-
-@PersistenceContext
-private EntityManager entityManager;
-
-public List<User> findUsersByEmailAddress(String email) {
-    // Insecure: Directly concatenating user input into the query
-    String query = "SELECT u FROM User u WHERE u.email = '" + email + "'";
-    return entityManager.createQuery(query, User.class).getResultList();
-}
-}
-```
-    - 
