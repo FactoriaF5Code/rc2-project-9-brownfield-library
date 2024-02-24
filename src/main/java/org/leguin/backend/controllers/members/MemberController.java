@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import org.leguin.backend.persistence.members.Member;
 import org.leguin.backend.persistence.members.MemberRepository;
+import org.leguin.backend.services.PasswordGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,11 +22,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MemberController {
 
     private MemberRepository repository;
+    private PasswordGeneratorService passwordGeneratorService;
     @PersistenceContext
     private EntityManager entityManager;
 
-    public MemberController(@Autowired MemberRepository repository) {
+    public MemberController(@Autowired MemberRepository repository,
+            @Autowired PasswordGeneratorService passwordGeneratorService) {
         this.repository = repository;
+        this.passwordGeneratorService = passwordGeneratorService;
     }
 
     @PostMapping
@@ -36,7 +40,8 @@ public class MemberController {
                 request.getLastName(),
                 request.getAddress(),
                 request.getEmail(),
-                request.getPhone()));
+                request.getPhone(),
+                passwordGeneratorService.generatePassword(12)));
         return new CreateMemberResponse(request.getId());
     }
 

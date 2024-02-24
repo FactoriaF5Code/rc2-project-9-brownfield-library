@@ -26,13 +26,14 @@ public class Member {
     public Member() {
     }
 
-    public Member(UUID id, String firstName, String lastName, String address, String email, String phone) {
+    public Member(UUID id, String firstName, String lastName, String address, String email, String phone, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.email = email;
         this.phone = phone;
+        this.password = password;
     }
 
     public String getFirstName() {

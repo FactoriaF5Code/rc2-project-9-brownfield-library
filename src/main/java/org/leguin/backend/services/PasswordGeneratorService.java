@@ -2,6 +2,9 @@ package org.leguin.backend.services;
 
 import java.util.Random;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class PasswordGeneratorService {
 
     public String generatePassword(int length) {
