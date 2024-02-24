@@ -18,12 +18,19 @@ const handlers = [
             ]
         });
     }),
-    http.post(`${getApiHost()}/api/books`, async ({request}) => {
-        
+    http.post(`${getApiHost()}/api/books`, async ({ request }) => {
+
         const body = await request.json();
 
         return HttpResponse.json({
             msg: `Book ${body.id} saved successfully`
+        });
+    }),
+    http.post(`${getApiHost()}/auth/login`, async () => {
+
+        return HttpResponse.json({
+            error: null,
+            loginType: "curator"
         });
     })
 ];

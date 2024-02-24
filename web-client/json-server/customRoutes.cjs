@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */
 module.exports = (req, res, next) => {
+    console.log("received request to "+ req.path);
     if (req.method === 'POST' && req.path === '/books') {
-        
+
         const { id } = req.body;
 
         if (id) {
@@ -16,7 +17,7 @@ module.exports = (req, res, next) => {
     }
 
     if (req.method === 'POST' && req.path === '/members') {
-        
+
         const { id } = req.body;
 
         if (id) {
@@ -31,7 +32,7 @@ module.exports = (req, res, next) => {
     }
 
     if (req.method === 'POST' && req.path === '/loans') {
-        
+
         const { id } = req.body;
 
         if (id) {
@@ -46,7 +47,14 @@ module.exports = (req, res, next) => {
     }
 
     
+    if (req.method === 'POST' && req.path === '/login') {
 
+        return res.status(200).json({
+            loginType: "curator",
+            error: null,
+        });
+
+    }
 
 
     // For all other requests, just continue as normal

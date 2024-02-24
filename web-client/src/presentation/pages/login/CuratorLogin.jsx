@@ -12,14 +12,21 @@ const CuratorLogin = () => {
 
 
   // Handle form submission
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    login({ email: email, password: password });
+    try {
+      const loginSuccess = await login({ email: email, password: password });
+      if (loginSuccess) {
+        setEmail('');
+        setPassword('');
+        navigate("/members", { state: { msg: "Login successful" } });
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
 
-    setEmail('');
-    setPassword('');
-    navigate("/curators", { state: { msg: "Login successful" } });
   };
 
   return (

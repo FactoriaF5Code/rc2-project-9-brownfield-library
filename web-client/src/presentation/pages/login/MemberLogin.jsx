@@ -12,14 +12,21 @@ const MemberLogin = () => {
 
 
   // Handle form submission
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    login({ email: email, password: password });
-
-    setEmail('');
-    setPassword('');
-    navigate("/members", { state: { msg: "Login successful" } });
+    try {
+      const loginSuccess = await login({ email: email, password: password });
+      if (loginSuccess) {
+        setEmail('');
+        setPassword('');
+        navigate("/members", { state: { msg: "Login successful" } });
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
+    
   };
 
   return (
