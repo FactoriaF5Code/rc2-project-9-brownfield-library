@@ -1,11 +1,11 @@
 - [x] Diferentes portales para gestor de la biblioteca, socios
 - [x] Añadir préstamo
-  - [ ] El préstamo dura 30 días naturales
+  - [x] El préstamo dura 30 días naturales
 - [ ] Diferenciar login de member y curator
 - [ ] Un componente guapo para mensajes
 - [ ] Botón de "Atrás" o "Menú"  
 - [ ] Buscar socio
-- [ ] Ver préstamos de un libro
+- [ ] Ver préstamos de un libro 
   - [ ] Los socios sólo ven si un libro está prestado o no
   - [ ] Los trabajadores (curators) pueden ver quién tiene un libro y cuándo se tiene que devolver
 - [ ] Los socios reciben un mail cuando se dan de alta

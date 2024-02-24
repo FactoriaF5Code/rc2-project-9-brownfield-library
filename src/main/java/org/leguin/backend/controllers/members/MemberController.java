@@ -2,6 +2,9 @@ package org.leguin.backend.controllers.members;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -19,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MemberController {
 
     private MemberRepository repository;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     public MemberController(@Autowired MemberRepository repository) {
         this.repository = repository;
@@ -37,10 +42,10 @@ public class MemberController {
     }
 
     @GetMapping
-    public SearchMemberResponse searchMembers(@RequestParam(name = "q", required = true) String query) {
-        var results = repository.findAll().stream()
-                .filter(m -> m.getFirstName().contains(query))
-                .collect(Collectors.toList());
+    public SearchMemberResponse searchMembers(@RequestParam(name = "q", required = true) String q) {
+
+        String query = "SELECT m FROM Member m WHERE m.lastName LIKE '" + q + "'";
+        var results = entityManager.createQuery(query, Member.class).getResultList();
 
         return new SearchMemberResponse(results);
     }
