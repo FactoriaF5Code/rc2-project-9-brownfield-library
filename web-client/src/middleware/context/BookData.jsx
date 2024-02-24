@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
 import { BookService } from "../../services/BookService";
 import { LoanService } from "../../services/LoanService";
+import { PropTypes } from 'prop-types';
 const BookDataContext = createContext();
 
 export const BookDataProvider = ({ children }) => {
@@ -28,6 +29,10 @@ export const BookDataProvider = ({ children }) => {
 
   return <BookDataContext.Provider value={value}>{children}</BookDataContext.Provider>;
 };
+
+BookDataProvider.propTypes = {
+  children: PropTypes.node.isRequired
+}
 
 export const useBookDataContext = () => {
 
