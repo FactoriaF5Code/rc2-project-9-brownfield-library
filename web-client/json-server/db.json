@@ -10,5 +10,17 @@
         "available": true
       }
     ]
+  },
+  "members": {
+    "results": [
+      {
+        "id": "a0ecb47e-9e0b-4c86-8d69-9a2f46146b15",
+        "firstName": "Juan",
+        "lastName": "Pérez",
+        "address": "123 Calle Principal, Ciudad",
+        "email": "juan.perez@email.com",
+        "phone": "1234567890"
+      }
+    ]
   }
 }

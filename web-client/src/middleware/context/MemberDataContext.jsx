@@ -4,13 +4,18 @@ import { MemberService } from '../../services/MemberService';
 const MemberDataContext = createContext();
 
 export const MemberDataProvider = ({ children }) => {
+    const memberService = new MemberService();
+
+    const searchMembers = async (query) => {
+        return memberService.searchMembers(query);
+    }
 
     const createMember = async (memberRequest) => {
-        const memberService = new MemberService();
         return memberService.createMember(memberRequest);
     }
 
     const value = {
+        searchMembers,
         createMember,
     };
     return <MemberDataContext.Provider value={value}>{children}</MemberDataContext.Provider>

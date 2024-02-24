@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import { BookService } from "../../services/BookService";
-
+import { LoanService } from "../../services/LoanService";
 const BookDataContext = createContext();
 
 export const BookDataProvider = ({ children }) => {
@@ -15,9 +15,15 @@ export const BookDataProvider = ({ children }) => {
     return bookService.createBook(bookRequest);
   };
 
+  const createLoan = async (loanRequest) => {
+    const loanService = new LoanService();
+    return loanService.createLoan(loanRequest);
+  }
+
   const value = {
     searchBooks,
     createBook,
+    createLoan,
   };
 
   return <BookDataContext.Provider value={value}>{children}</BookDataContext.Provider>;
