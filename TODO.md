@@ -1,5 +1,5 @@
 - [x] Diferentes portales para gestor de la biblioteca, socios
-- [ ] Añadir préstamo
+- [x] Añadir préstamo
   - [ ] El préstamo dura 30 días naturales
 - [ ] Diferenciar login de member y curator
 - [ ] Un componente guapo para mensajes
