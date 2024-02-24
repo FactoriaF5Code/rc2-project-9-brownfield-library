@@ -8,7 +8,8 @@ This is the Brownfield library Monolith repository. It runs the library portal f
 
 ## Developer Setup
 
-- Install the `setup.sh` script
+Before starting:
+- Install the git hooks using the `setup.sh` Bash script
 - Make sure you are using Java 17 and that you have Maven installed
 
 ## Running the application
