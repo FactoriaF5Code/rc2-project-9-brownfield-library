@@ -47,24 +47,20 @@ Run the tests with Maven by doing `mvn test`.
 
 ## Running the application in `development` or `production` mode
 
-Use the `-P` flag to control the development profile
+Use the `-P` flag to control the application profiles: `test`, `dev` and `prod`
 
-### How to run the Posgres Database with Docker
+```
+mvn -P{profile} spring-boot:run
+```
+
+- The `prod` profile connects the application to a Postgres database, whereas the `dev` and `test` profiles use H2.
+- The `dev` profile loads initial data using sample `.sql` statements placed in the `resources` folder.
+  
+
+## How to run the Posgres Database with Docker
+
+If you want to use docker instead of manually configuring a Posgres database:
 
 ```
 docker run --name postgres-container -e POSTGRES_USER=leguin_admin -e POSTGRES_PASSWORD=leguin_forever -e POSTGRES_DB=library_db -p 5432:5432 -d postgres
-```
-
-### How to run with the production Database
-
-```
-./mvnw spring-boot:run -Dspring-boot.run.profiles=prod
-```
-
-See the [Spring Boot Maven Plugin Documentation](https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/#run.examples.specify-active-profiles) for more info
-
-#### Install the git hooks
-
-```
-. ./setup.sh
 ```

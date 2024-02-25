@@ -9,7 +9,7 @@ cat << 'EOF' > $COMMIT_MSG_HOOK
 #!/bin/sh
 
 # Regular expression to check for feature name in brackets at the start of the commit message
-PATTERN="^\[BL-[0-9]+\].*$"
+PATTERN="^\[(BL-[0-9]+|fix)\].*$"
 
 # Read the commit message from the file provided as the first argument
 COMMIT_MSG_FILE=$1
