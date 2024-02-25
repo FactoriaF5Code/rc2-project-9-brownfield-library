@@ -1,4 +1,4 @@
-### How to run the Posgres Database with Docker
+### How to run the Postgres Database with Docker
 
 ```
 docker run --name postgres-container -e POSTGRES_USER=leguin_admin -e POSTGRES_PASSWORD=leguin_forever -e POSTGRES_DB=library_db -p 5432:5432 -d postgres
