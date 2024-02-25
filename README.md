@@ -45,7 +45,9 @@ The database schema is updated by using [Flyway migrations](https://docs.spring.
 
 Run the tests with Maven by doing `mvn test`.
 
+## Running the application in `development` or `production` mode
 
+Use the `-P` flag to control the development profile
 
 ### How to run the Posgres Database with Docker
 
