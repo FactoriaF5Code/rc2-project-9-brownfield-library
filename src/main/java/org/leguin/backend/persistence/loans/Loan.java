@@ -27,4 +27,24 @@ public class Loan {
         this.startDate = LocalDate.now();
         this.endDate = startDate.plusDays(30);
     }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public UUID getBookId() {
+        return bookId;
+    }
+
+    public UUID getMemberId() {
+        return memberId;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
 }
