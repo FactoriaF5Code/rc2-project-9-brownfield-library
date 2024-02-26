@@ -20,7 +20,7 @@ const CuratorLogin = () => {
       if (loginSuccess) {
         setEmail('');
         setPassword('');
-        navigate("/members", { state: { msg: "Login successful" } });
+        navigate("/curators", { state: { msg: "Login successful" } });
       }
     }
     catch (err) {
