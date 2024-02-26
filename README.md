@@ -12,6 +12,14 @@ Before starting:
 - Install the git hooks using the `setup.sh` Bash script
 - Make sure you are using Java 17 and that you have Maven installed
 
+## Good practices and conventions
+
+- To create a feature or when working in a User Story, use the User Story (or Task) code as a branch name (e.g `BL-16`).
+- Each new commit must start with the prefix `[BL-N]`, where `N` is the story or task number. You can exceptionally use the `[fix]` prefix for short-lived branches and quick fixes.
+
+### Reviews
+- Every time you create a new Pull Request, make sure you add the repo administrators to the PR review + 1 person from a different team.
+
 ## Running the application
 
 To compile and run the application, do
