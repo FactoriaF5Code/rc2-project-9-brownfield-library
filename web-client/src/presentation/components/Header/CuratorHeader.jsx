@@ -19,6 +19,7 @@ export const CuratorHeader = () => {
           <Link to="/curators/logout"><button className="btn-access">logout</button></Link> :
           <Link to="/curators/login"><button className="btn-access">login</button></Link>
         }
+        
       </header>
     </>
   );

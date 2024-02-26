@@ -1,6 +1,7 @@
 import "./Header.css";
 import logo from "../../assets/greenfield-logo.png";
 import { Link } from "react-router-dom";
+import GoBackButton from "../GoBackButton/GoBackButton";
 
 export const SecondaryHeader = () => {
   return (
@@ -13,6 +14,7 @@ export const SecondaryHeader = () => {
           <h1>Powered by Brownfield MegaCorporation Inc</h1>
         </div>
         <Link to="/" className="backButton">Volver a inicio</Link>
+        <GoBackButton />
       </header>
     </>
   );
