@@ -2,10 +2,12 @@ package org.leguin.backend.controllers.loans;
 
 import java.util.UUID;
 
+import org.leguin.backend.persistence.BookRepository;
 import org.leguin.backend.persistence.loans.Loan;
 import org.leguin.backend.persistence.loans.LoanRepository;
 import org.leguin.backend.services.BookAvailabilityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,17 +18,24 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoanController {
 
     private LoanRepository loanRepository;
+    private BookRepository bookRepository;
     private BookAvailabilityService bookAvailabilityService;
-    
 
     public LoanController(@Autowired LoanRepository loanRepository,
-            @Autowired BookAvailabilityService bookAvailabilityService) {
+            @Autowired BookAvailabilityService bookAvailabilityService,
+            @Autowired BookRepository bookRepository) {
         this.loanRepository = loanRepository;
         this.bookAvailabilityService = bookAvailabilityService;
+        this.bookRepository = bookRepository;
     }
 
     @PostMapping
-    public CreateLoanResponse createLoan(@RequestBody CreateLoanRequest request) {
+    public ResponseEntity<CreateLoanResponse> createLoan(@RequestBody CreateLoanRequest request) {
+        if (!bookRepository.existsById(UUID.fromString(request.getBookId()))) {
+            return ResponseEntity.badRequest()
+            .build();
+        }
+
         Loan loan = new Loan(
                 UUID.fromString(request.getId()),
                 UUID.fromString(request.getBookId()),
@@ -36,7 +45,7 @@ public class LoanController {
 
         bookAvailabilityService.setAsNotAvailable(UUID.fromString(request.getBookId()));
 
-        return new CreateLoanResponse(request.getId());
+        return ResponseEntity.ok(new CreateLoanResponse(request.getId()));
     }
 
 }

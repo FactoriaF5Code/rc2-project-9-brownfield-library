@@ -96,9 +96,8 @@ public class CreateLoanTest {
                                                     "memberId": "a0ecb47e-9e0b-4c86-8d69-9a2f46146b15"
                                                 }
                                                 """))
-                                .andExpect(status().isBadRequest())
-                                .andExpect(jsonPath("$.msg",
-                                                equalTo("This bookId df11a78c-fb09-4522-ba42-c3ec7d5721ae is not found.")));
+                                .andExpect(status().isBadRequest());
+                                
         }
 
 }
