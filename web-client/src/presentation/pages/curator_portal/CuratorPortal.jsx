@@ -1,18 +1,18 @@
-import { Outlet, useLocation } from "react-router-dom"
-import { CuratorHeader } from "../../components/Header/CuratorHeader"
+import { Outlet, useLocation } from "react-router-dom";
+import { CuratorHeader } from "../../components/Header/CuratorHeader";
+import "./CuratorPortal.css";
 
 export const CuratorPortal = () => {
-    
-    const location = useLocation();
-    const msg = location.state?.msg;
+  const location = useLocation();
+  const msg = location.state?.msg;
 
-    return (
-        <>
-            <CuratorHeader />
-            { msg && <span>{msg}</span>}
-            <main>
-                <Outlet />
-            </main>
-        </>
-    )
-}
+  return (
+    <>
+      <CuratorHeader />
+      {msg && <div className="toastMessage">{msg}</div>}
+      <main>
+        <Outlet />
+      </main>
+    </>
+  );
+};

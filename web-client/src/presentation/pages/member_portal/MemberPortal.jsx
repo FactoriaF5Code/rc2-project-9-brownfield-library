@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { MemberHeader } from '../../components/Header/MemberHeader';
+import "../curator_portal/CuratorPortal.css";
 
 export const MemberPortal = () => {
   const location = useLocation();
@@ -9,7 +10,7 @@ export const MemberPortal = () => {
   return (
     <>
       <MemberHeader />
-      {msg && <span>{msg}</span>}
+      {msg && <div className="toastMessage">{msg}</div>}
       <main>
         <Outlet />
       </main>
