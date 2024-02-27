@@ -27,4 +27,5 @@ public class Loan {
         this.startDate = LocalDate.now();
         this.endDate = startDate.plusDays(30);
     }
+
 }
