@@ -46,6 +46,7 @@ public class BookController {
                         request.getAuthor(),
                         request.getIsbn(),
                         request.getYear(),
+                        request.getGenre(),
                         request.getAvailable()));
 
         return new CreateBookResponse(request.getId());
@@ -58,6 +59,7 @@ public class BookController {
                 book.getTitle(),
                 book.getAuthor(),
                 book.getYear(),
+                book.getGenre(),
                 book.isAvailable());
     }
 

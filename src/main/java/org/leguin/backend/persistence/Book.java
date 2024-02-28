@@ -17,17 +17,19 @@ public class Book {
     private String isbn;
     @Column(name = "publication_year")
     private String year;
+    private String genre;
     private Boolean available;
-
+    
     public Book() {
     }
 
-    public Book(UUID id, String title, String author, String isbn, String year, Boolean available) {
+    public Book(UUID id, String title, String author, String isbn, String year, String genre, Boolean available) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.isbn = isbn;
         this.year = year;
+        this.genre = genre;
         this.available = available;
     }
 
@@ -77,6 +79,14 @@ public class Book {
 
     public void setAvailable(Boolean available) {
         this.available = available;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
 }

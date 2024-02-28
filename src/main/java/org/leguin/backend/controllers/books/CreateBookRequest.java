@@ -6,6 +6,7 @@ public class CreateBookRequest {
     private String author;
     private String isbn;
     private String year;
+    private String genre;
     private Boolean available;
     
     public String getId() {
@@ -25,6 +26,9 @@ public class CreateBookRequest {
     }
     public Boolean getAvailable() {
         return available;
+    }
+    public String getGenre() {
+        return genre;
     }
 
     

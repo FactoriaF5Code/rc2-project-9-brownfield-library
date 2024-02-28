@@ -7,15 +7,16 @@ public class BookResponse {
     private String title;
     private String author;
     private String year;
-
+    private String genre;
     private Boolean available;
 
-    public BookResponse(String id, String isbn, String title, String author, String year, Boolean available) {
+    public BookResponse(String id, String isbn, String title, String author, String year, String genre, Boolean available) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.year = year;
+        this.genre = genre;
         this.available = available;
     }
 
@@ -45,5 +46,9 @@ public class BookResponse {
 
     public void setYear(String year) {
         this.year = year;
+    }
+
+    public String getGenre() {
+        return genre;
     }
 }
