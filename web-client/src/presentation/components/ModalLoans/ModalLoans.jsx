@@ -1,4 +1,5 @@
 import "./ModalLoans.css";
+import equis from "../../assets/equissss.svg";
 
 export default function ModalLoans({ onclose }) {
   return (
@@ -7,26 +8,35 @@ export default function ModalLoans({ onclose }) {
         <section className="contenedorModal">
           <div className="contenedorModal__content">
             <div className="contenedorButton__cerrar">
-              <button className="cerrarModal" onClick={onclose}>
-                {/* <img src={cruz} alt="x" /> */}
-              </button>
+              <img
+                className="cerrarModal"
+                onClick={onclose}
+                src={equis}
+                alt="x"
+              />
             </div>
             <div className="contenedorInformación">
-              <div className="h2Input">
-                <h2 className="h2Info">TÍTULO</h2>
-                <section className="inputInfo"></section>
+              <div>
+                <h2>Title</h2>
+                <input
+                  type="text"
+                  placeholder="The Left Hand of Darkness"
+                  disabled
+                />
               </div>
-              <div className="h2Input">
-                <h2 className="h2Info">AUTOR</h2>
-                <section className="inputInfo"></section>
+              <div>
+                <h2>Member</h2>
+                <input type="text" placeholder="Miguel Ruiz" disabled />
               </div>
-              <div className="h2Input">
-                <h2 className="h2Info">SINOPSIS</h2>
-                <section className="inputInfo__sinopsis"></section>
-                <article className="contenedorBotonDescatalogar">
-                  <button>DESCATALOGAR</button>
-                </article>
+              <div>
+                <h2>Date return</h2>
+                <input type="text" placeholder="24/02/2024" disabled />
               </div>
+              <div>
+                <h2>Contact</h2>
+                <input type="text" placeholder="contact@gmail.com" disabled />
+              </div>
+              <button className="buttonReturn">Return</button>
             </div>
           </div>
         </section>
