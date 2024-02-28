@@ -16,8 +16,8 @@ export const BookTable = ({ books }) => {
   const tableHeaders = ["ID", "ISBN", "Título", "Autor", "Estado"];
   const [selectedState, setSelectedState] = useState(null);
 
-  const openModal = (state) => {
-    setSelectedState(state);
+  const openModal = (books) => {
+    setSelectedState(books);
   };
 
   const closeModal = () => {
@@ -45,21 +45,20 @@ export const BookTable = ({ books }) => {
                 <TableCell className="table-cell">{title}</TableCell>
                 <TableCell className="table-cell">{author}</TableCell>
                 {/* SMELL/POSSIBLE REFACTOR: this cell into separate component */}
-                <div onClick={() => openModal(state)}>
-                  <TableCell
-                    className={`table-cell ${
-                      available ? "available" : "not-available"
-                    }`}
-                  >
-                    <div className="status-container">
-                      <div
-                        className={`status-circle ${
-                          available ? "available" : "not-available"
-                        }`}
-                      ></div>
-                    </div>
-                  </TableCell>
-                </div>
+                <TableCell
+                  onClick={() => openModal(books)}
+                  className={`table-cell ${
+                    available ? "available" : "not-available"
+                  }`}
+                >
+                  <div className="status-container">
+                    <div
+                      className={`status-circle ${
+                        available ? "available" : "not-available"
+                      }`}
+                    ></div>
+                  </div>
+                </TableCell>
               </TableRow>
             ))}
             {selectedState && (
