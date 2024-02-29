@@ -39,7 +39,8 @@ public class LoanController {
         Loan loan = new Loan(
                 UUID.fromString(request.getId()),
                 UUID.fromString(request.getBookId()),
-                UUID.fromString(request.getMemberId()));
+                UUID.fromString(request.getMemberId()),
+                UUID.fromBoolean(request.getIsAvailable()));
 
         loanRepository.save(loan);
 
