@@ -1,4 +1,5 @@
 import "./Table.css";
+import { useEffect } from "react";
 
 import {
     Table,
@@ -12,6 +13,12 @@ import {
 
 
 export const LoanMemberTable = () => {
+
+    useEffect(
+        () => {
+            console.log("Aqui hacemos el GET")
+        },
+    []);
 
   return (
     <div>
