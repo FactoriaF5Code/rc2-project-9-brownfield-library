@@ -11,11 +11,19 @@
       },
       {
         "id": "68ec1461-7914-4ac0-9600-1c6921cf078d",
-        "title": "Un libro de ejemplo",
+        "title": "El peor libro de la historia",
         "author": "Autor de ejemplo",
         "year": "1999",
         "isbn": "9827365",
         "available": false
+      },
+      {
+        "id": "68ec1461-7914-4ac0-9600-1c6921cf078d",
+        "title": "El mejor libro de la historia",
+        "author": "Autor de ejemplo",
+        "year": "1999",
+        "isbn": "9827365",
+        "available": true
       }
     ]
   },
@@ -27,6 +35,14 @@
         "lastName": "Pérez",
         "address": "123 Calle Principal, Ciudad",
         "email": "juan.perez@email.com",
+        "phone": "1234567890"
+      },
+      {
+        "id": "a0ecb47e-9e0b-4c86-8d69-9a2f46146b15",
+        "firstName": "Paco",
+        "lastName": "Merte",
+        "address": "123 Calle Principal, Ciudad",
+        "email": "paco.merte@email.com",
         "phone": "1234567890"
       }
     ]
