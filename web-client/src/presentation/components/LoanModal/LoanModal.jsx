@@ -1,5 +1,5 @@
 import "./LoanModal.css";
-import equis from "../../assets/equissss.svg";
+import CrossCloseModal from "../../assets/CrossCloseModal.svg";
 import { useEffect } from "react";
 
 export default function LoanModal({ book, onclose }) {
@@ -23,7 +23,7 @@ export default function LoanModal({ book, onclose }) {
                 <img
                   className="cerrarModal"
                   onClick={onclose}
-                  src={equis}
+                  src={CrossCloseModal}
                   alt="x"
                 />
               </div>
