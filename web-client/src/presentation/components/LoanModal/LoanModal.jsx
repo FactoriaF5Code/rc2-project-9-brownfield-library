@@ -1,10 +1,18 @@
 import "./LoanModal.css";
 import equis from "../../assets/equissss.svg";
+import { useEffect } from "react";
 
 export default function LoanModal({ book, onclose }) {
+  const { id, title } = book;
+
+  useEffect(
+    () => {
+      console.log(`Hay que llamar a GET /api/loans?bookId=` + book.id);
+      console.log(`Usando el book Context`)
+    }
+    , [book]);
 
   if (book && !book.available) {
-    const { title, member, returnDate, contact } = book;
 
     return (
       <>
@@ -26,11 +34,11 @@ export default function LoanModal({ book, onclose }) {
                 </div>
                 <div>
                   <h2>Member</h2>
-                  <input type="text" placeholder={member} disabled />
+                  <input type="text" placeholder={"Member"} disabled />
                 </div>
                 <div>
                   <h2>Return Date</h2>
-                  <input type="text" placeholder={returnDate} disabled />
+                  <input type="text" placeholder={"Return Date"} disabled />
                 </div>
               </div>
             </div>
