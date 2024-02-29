@@ -16,14 +16,16 @@ export const BookTable = ({ books }) => {
   const tableHeaders = ["ID", "ISBN", "Título", "Autor", "Estado"];
   const [selectedState, setSelectedState] = useState(null);
 
-  const openModal = (books) => {
-    setSelectedState(books);
+  const openModal = (book) => {
+    if (!book.available) {
+      setSelectedState(book);
+    }
   };
 
   const closeModal = () => {
     setSelectedState(null);
   };
-
+  
   return (
     <div>
       <TableContainer component={Paper} className="table-container">
@@ -38,37 +40,41 @@ export const BookTable = ({ books }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {books.map(({ id, isbn, title, author, available }, index) => (
-              <TableRow key={index}>
-                <TableCell className="table-cell">{id}</TableCell>
-                <TableCell className="table-cell">{isbn}</TableCell>
-                <TableCell className="table-cell">{title}</TableCell>
-                <TableCell className="table-cell">{author}</TableCell>
-                {/* SMELL/POSSIBLE REFACTOR: this cell into separate component */}
-                <TableCell
-                  onClick={() => openModal(books)}
-                  className={`table-cell ${
-                    available ? "available" : "not-available"
-                  }`}
-                >
-                  <div className="status-container">
-                    <div
-                      className={`status-circle ${
-                        available ? "available" : "not-available"
-                      }`}
-                    ></div>
-                  </div>
-                </TableCell>
-              </TableRow>
-            ))}
-            {selectedState && (
-              <div className="contenedorModal__componente">
-                <ModalLoans onclose={closeModal} />
-              </div>
-            )}
+            {books.map(({ id, isbn, title, author, available }, index) => {
+              return (
+                <TableRow key={index}>
+                  <TableCell className="table-cell">{id}</TableCell>
+                  <TableCell className="table-cell">{isbn}</TableCell>
+                  <TableCell className="table-cell">{title}</TableCell>
+                  <TableCell className="table-cell">{author}</TableCell>
+                  {/* SMELL/POSSIBLE REFACTOR: this cell into separate component */}
+                  <TableCell
+                    onClick={() =>
+                      openModal({ id, isbn, title, author, available })
+                    }
+                    className={`table-cell ${
+                      available ? "available" : "not-available"
+                    }`}
+                  >
+                    <div className="status-container">
+                      <div
+                        className={`status-circle ${
+                          available ? "available" : "not-available"
+                        }`}
+                      ></div>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>
+      {selectedState && (
+        <div className="contenedorModal__componente">
+          <ModalLoans book={selectedState} onclose={closeModal} />
+        </div>
+      )}
     </div>
   );
 };
