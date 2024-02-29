@@ -26,11 +26,13 @@ const handlers = [
             msg: `Book ${body.id} saved successfully`
         });
     }),
-    http.post(`${getApiHost()}/auth/login`, async () => {
+    http.post(`${getApiHost()}/auth/login`, async ({request}) => {
+
+        const { user } = await request.json();
 
         return HttpResponse.json({
             error: null,
-            loginType: "curator"
+            loginType: user === "curator@greenfield.com" ? "curator" : "member"
         });
     })
 ];
