@@ -1,4 +1,9 @@
 {
+  "loans": {
+    "id" : "098765",
+    "member": "Ada Colau",
+    "returnDate": "2024-03-14"
+  },
   "books": {
     "results": [
       {

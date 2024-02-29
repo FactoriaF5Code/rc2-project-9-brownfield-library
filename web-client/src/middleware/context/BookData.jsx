@@ -21,10 +21,16 @@ export const BookDataProvider = ({ children }) => {
     return loanService.createLoan(loanRequest);
   }
 
+  const searchLoanInfo = async (bookId) => {
+    const bookService = new BookService();
+    return bookService.searchLoanInfo(bookId);
+  }
+
   const value = {
     searchBooks,
     createBook,
     createLoan,
+    searchInfoLoan: searchLoanInfo
   };
 
   return <BookDataContext.Provider value={value}>{children}</BookDataContext.Provider>;
