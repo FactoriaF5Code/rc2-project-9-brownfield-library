@@ -2,6 +2,7 @@ package org.leguin.backend.controllers.loans;
 
 import java.util.UUID;
 
+import org.leguin.backend.persistence.Book;
 import org.leguin.backend.persistence.BookRepository;
 import org.leguin.backend.persistence.loans.Loan;
 import org.leguin.backend.persistence.loans.LoanRepository;
@@ -39,14 +40,20 @@ public class LoanController {
         Loan loan = new Loan(
                 UUID.fromString(request.getId()),
                 UUID.fromString(request.getBookId()),
-                UUID.fromString(request.getMemberId()),
-                UUID.fromBoolean(request.getIsAvailable()));
+                UUID.fromString(request.getMemberId()));
 
         loanRepository.save(loan);
 
+        Book book = bookRepository.findById(UUID.fromString(request.getBookId())).get();
+        if (!book.isAvailable()) {
+            return ResponseEntity.badRequest().build();
+        }
+
+
         bookAvailabilityService.setAsNotAvailable(UUID.fromString(request.getBookId()));
-
+    
         return ResponseEntity.ok(new CreateLoanResponse(request.getId()));
-    }
-
+    }            
 }
+
+
