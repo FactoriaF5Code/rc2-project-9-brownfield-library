@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 
 export const CuratorHome = () => {
   return (
-    <div className="btn-access-group">
+    <div>
+     
+      <div className="btn-access-group">
       <Link to="books"> <button className="btn-access">Books</button></Link>
       <Link to="members"> <button className="btn-access blue">Members</button></Link>
-      <Link to="loans/new"> <button className="btn-access blue">Loans</button></Link>
-    </div>
+      <Link to="loans"> <button className="btn-access blue">Loans</button></Link>
+      </div>
+      </div>
   )
 }
