@@ -1,9 +1,11 @@
 import "./MembersLoan.css"
+import { LoanMemberTable } from "../../components/Table/LoanMemberTable";
 
 export const MembersLoan = () => {
   return (
-    <div>
-        nuestra pagina
-    </div>
+    <>
+        <h2 className="Form__title">Tus préstamos</h2>
+        <LoanMemberTable />
+    </>
   )
 }
