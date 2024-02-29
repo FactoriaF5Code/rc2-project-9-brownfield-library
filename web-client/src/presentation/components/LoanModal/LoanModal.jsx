@@ -1,7 +1,7 @@
-import "./ModalLoans.css";
+import "./LoanModal.css";
 import equis from "../../assets/equissss.svg";
 
-export default function ModalLoans({ book, onclose }) {
+export default function LoanModal({ book, onclose }) {
 
   if (book && !book.available) {
     const { title, member, returnDate, contact } = book;
@@ -29,14 +29,9 @@ export default function ModalLoans({ book, onclose }) {
                   <input type="text" placeholder={member} disabled />
                 </div>
                 <div>
-                  <h2>Date return</h2>
+                  <h2>Return Date</h2>
                   <input type="text" placeholder={returnDate} disabled />
                 </div>
-                <div>
-                  <h2>Contact</h2>
-                  <input type="text" placeholder={contact} disabled />
-                </div>
-                <button className="buttonReturn">Return</button>
               </div>
             </div>
           </section>

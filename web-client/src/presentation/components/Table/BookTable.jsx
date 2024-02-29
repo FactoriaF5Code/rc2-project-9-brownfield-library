@@ -10,7 +10,7 @@ import {
 import "./Table.css";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import ModalLoans from "../ModalLoans/ModalLoans";
+import LoanModal from "../LoanModal/LoanModal";
 
 export const BookTable = ({ books }) => {
   const tableHeaders = ["ID", "ISBN", "Título", "Autor", "Estado"];
@@ -72,7 +72,7 @@ export const BookTable = ({ books }) => {
       </TableContainer>
       {selectedState && (
         <div className="contenedorModal__componente">
-          <ModalLoans book={selectedState} onclose={closeModal} />
+          <LoanModal book={selectedState} onclose={closeModal} />
         </div>
       )}
     </div>
