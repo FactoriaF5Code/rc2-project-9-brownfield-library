@@ -20,7 +20,7 @@ import { EditLoan } from '../../presentation/pages/loan_manager/EditLoan';
 export const AppRouter = () => {
   return (
     <BrowserRouter>
-      <Routes>
+      <Routes>-
         {/* home / book search */}
         <Route path="/" element={<CoverPage />} />
         <Route path="/curators/" element={<CuratorPortal />}>
@@ -43,6 +43,7 @@ export const AppRouter = () => {
           <Route element={<PrivateRoute loginPath="/members/login" />}>
             <Route index element={<MemberHome />} />
             <Route path="/members/books" element={<BookSearcher />} />
+            <Route path="loans" element={<div>Hola!</div>} />
             {/* <Route path="/members/books/:id" element={<BookDetailsPage />} /> */}
             {/* mis préstamos */}
             {/* mis reservas */}

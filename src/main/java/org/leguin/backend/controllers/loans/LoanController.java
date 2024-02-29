@@ -39,4 +39,6 @@ public class LoanController {
         return new CreateLoanResponse(request.getId());
     }
 
+    // hay que crear un get mapping para /api/loans?memberId=9128475136
+
 }
