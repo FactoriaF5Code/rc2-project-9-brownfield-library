@@ -55,5 +55,4 @@ BookTable.propTypes = {
   books: PropTypes.array.isRequired
 }
 
-
 export default BookTable;
