@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -52,16 +53,12 @@ public class LoanController {
     }
 
     @GetMapping("/api/loans?bookId={id}")
-    public ResponseEntity<CreateLoanResponse> getMemberById(@PathVariable Integer id) {
-        Optional<Loan> loan = repository.findById(id);
+    public ResponseEntity<Loan> getLoanById(@RequestParam UUID bookId) {
+        Optional<Loan> loan = loanRepository.findByBookId(bookId);
         if (loan.isPresent()) {
-            Loan existingMember = loan.get();
-            CreateLoanResponse membersResponse = new CreateLoanResponse(existingLoan.getIdLoan(),
-                    existingLoan.getName(), existingLoan.getLastName(),
-                    existingLoan.getReturnDate());
-            return ResponseEntity.ok(loanResponse);
+            Loan existingLoan = loan.get();
+            
+            return ResponseEntity.ok(existingLoan);
         } else {
             return ResponseEntity.notFound().build();
         }
-
-}
