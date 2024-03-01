@@ -17,6 +17,7 @@ import { MemberManager } from '../../presentation/pages/member_manager/MemberMan
 import { EditMember } from "../../presentation/pages/member_manager/EditMember";
 import { EditLoan } from '../../presentation/pages/loan_manager/EditLoan';
 import { MenuLoans } from "../../presentation/pages/menu_loans/MenuLoans";
+import { LoansSearcher } from "../../presentation/components/Searcher/LoansSearcher";
 
 export const AppRouter = () => {
   return (
@@ -33,7 +34,7 @@ export const AppRouter = () => {
               <Route path="books/new" element={<NewBookForm />} />         
             <Route path="loans" element={<MenuLoans />} />
               <Route path="loans/new" element={<EditLoan />} />
-              {/* <Route path="loans/search" element={</>} /> */}
+             <Route path="loans/search" element={<LoansSearcher/>} /> 
              
           </Route>
         </Route>
