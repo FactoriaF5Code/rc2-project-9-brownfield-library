@@ -1,5 +1,6 @@
 package org.leguin.backend.controllers.loans;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -52,14 +53,19 @@ public class LoanController {
         return ResponseEntity.ok(new CreateLoanResponse(request.getId()));
     }
 
-    @GetMapping("/api/loans?bookId={id}")
-    public ResponseEntity<Loan> getLoanById(@RequestParam UUID bookId) {
-        Optional<Loan> loan = loanRepository.findByBookId(bookId);
-        if (loan.isPresent()) {
-            Loan existingLoan = loan.get();
-            
-            return ResponseEntity.ok(existingLoan);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping
+    public List<Loan> getLoanById(@RequestParam(name = "bookId") UUID bookId) {
+        return loanRepository.findByBookId(bookId);
+
+        // buscar el préstamo cuyo bookId es bookId usando loanRepository.findByBookID
+
+        // sacar el memberId del préstamo
+
+        // sacar la fecha de final del préstamo
+
+        // sacar el nombre del member usando el memberId
+
+        // construir una respuesta que tenga (memberName ("Pérez, Pepito"), fechaFinal)
+
     }
+}
