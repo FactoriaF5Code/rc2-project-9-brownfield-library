@@ -62,3 +62,4 @@ public class LoanController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
