@@ -1,0 +1,11 @@
+.loansSearchContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.loansTitle{
+    font-size: 3rem;
+    color: var(--color-darkgreen);
+    text-align: center;
+}

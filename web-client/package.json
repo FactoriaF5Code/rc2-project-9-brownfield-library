@@ -10,7 +10,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "vitest",
-    "json-server": "json-server --watch json-server/db.json --routes json-server/routes.json --port 9001 --middlewares json-server/customRoutes.cjs"
+    "json-server": "json-server --watch json-server/db.json --routes json-server/routes.json --port 9002 --middlewares json-server/customRoutes.cjs"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
