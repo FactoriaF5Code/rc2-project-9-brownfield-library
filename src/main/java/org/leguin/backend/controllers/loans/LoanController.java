@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.leguin.backend.persistence.BookRepository;
 import org.leguin.backend.persistence.loans.Loan;
 import org.leguin.backend.persistence.loans.LoanRepository;
+import org.leguin.backend.persistence.members.MemberRepository;
 import org.leguin.backend.services.BookAvailabilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +24,17 @@ public class LoanController {
 
     private LoanRepository loanRepository;
     private BookRepository bookRepository;
+    private MemberRepository memberRepository;
     private BookAvailabilityService bookAvailabilityService;
 
     public LoanController(@Autowired LoanRepository loanRepository,
+            @Autowired MemberRepository memberRepository,
             @Autowired BookAvailabilityService bookAvailabilityService,
             @Autowired BookRepository bookRepository) {
         this.loanRepository = loanRepository;
         this.bookAvailabilityService = bookAvailabilityService;
         this.bookRepository = bookRepository;
+        this.memberRepository = memberRepository;
     }
 
     @PostMapping
@@ -52,13 +56,20 @@ public class LoanController {
         return ResponseEntity.ok(new CreateLoanResponse(request.getId()));
     }
 
-    @GetMapping("/api/loans?bookId={id}")
-    public ResponseEntity<Loan> getLoanById(@RequestParam UUID bookId) {
-        Optional<Loan> loan = loanRepository.findByBookId(bookId);
-        if (loan.isPresent()) {
-            Loan existingLoan = loan.get();
-            
-            return ResponseEntity.ok(existingLoan);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping
+    public String getLoanById(@RequestParam(name = "bookId") UUID bookId) {
+
+        // buscar el préstamo cuyo bookId es bookId usando loanRepository.findByBookID
+
+        // sacar el memberId del préstamo
+
+        // sacar la fecha de final del préstamo
+
+        // sacar el nombre del member usando el memberId
+
+        // construir una respuesta que tenga (memberName ("Pérez, Pepito"), fechaFinal)
+
+        
+        return "hola!";
+    }
+}
