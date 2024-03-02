@@ -26,8 +26,8 @@
   "loans":{
     "results": [
       {
-        "id": "68ec1461-7914-4ac0-9600-1c6921cf078d",
-        "book_id": "c4a4e597-9aee-4b1e-92de-41d33224c6a",
+        "id": "c4a4e597-9aee-4b1e-92de-41d33224c6a",
+        "book_id": "68ec1461-7914-4ac0-9600-1c6921cf078d",
         "member_id": "a0ecb47e-9e0b-4c86-8d69-9a2f46146b15",
         "start_date": "20-02-2024",
         "end_date": "29-02-2024"
