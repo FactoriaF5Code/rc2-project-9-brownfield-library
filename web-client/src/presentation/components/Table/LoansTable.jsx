@@ -31,7 +31,7 @@ import {
                 <TableRow key={index}>
                   <TableCell className="table-cell">{book.title}</TableCell>
                   <TableCell className="table-cell">
-                    {members[index] ? members[index].firstname : "N/A"}
+                    {members[index] ? members[index].firstName : "N/A"}
                   </TableCell>
                   <TableCell className="table-cell">
                     {members[index] ? members[index].lastName : "N/A"}
