@@ -12,7 +12,11 @@ import jakarta.persistence.Table;
 public class Loan {
     @Id
     private UUID id;
-    private UUID bookId;    
+    @ManyToOne
+    @JoinColumn(name = "id_book")
+    private UUID bookId;
+    @ManyToOne
+    @JoinColumn(name = "id_member")
     private UUID memberId;
     private LocalDate startDate;
     private LocalDate endDate;
