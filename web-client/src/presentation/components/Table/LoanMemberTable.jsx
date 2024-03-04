@@ -1,17 +1,24 @@
 import "./Table.css";
+import { useEffect, useState } from "react";
+import { useBookDataContext } from "../../../middleware/context/BookData";
 
 import {
-    Table,
-    TableHead,
-    TableBody,
-    TableRow,
-    TableCell,
-    TableContainer,
-    Paper,
-  } from "@mui/material";
-
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableContainer,
+  Paper,
+} from "@mui/material";
 
 export const LoanMemberTable = () => {
+  const { searchLoans } = useBookDataContext();
+  const [loans, setLoans] = useState([]);
+
+  useEffect(() => {
+    searchLoans().then((results) => setLoans(results));
+  }, []);
 
   return (
     <div>
@@ -19,18 +26,24 @@ export const LoanMemberTable = () => {
         <Table aria-label="fixed header table">
           <TableHead>
             <TableRow>
-                <TableCell  className="table-cell-header">Título</TableCell>
-                <TableCell  className="table-cell-header">Fecha de vencimiento</TableCell>
+              <TableCell className="table-cell-header">Título</TableCell>
+              <TableCell className="table-cell-header">
+                Fecha de vencimiento
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-                <TableRow>
-                  <TableCell className="table-cell">Título del libro reservado</TableCell>
-                  <TableCell className="table-cell">29/02/2024</TableCell>
+            {loans.map((loan) => {
+              return (
+                <TableRow key={loan.id}>
+                  <TableCell className="table-cell">{loan.bookTitle}</TableCell>
+                  <TableCell className="table-cell">{loan.endDate}</TableCell>
                 </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>
     </div>
-  )
-}
+  );
+};
