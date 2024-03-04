@@ -51,19 +51,9 @@
     "results": [
       {
         "id": "1",
-        "book_id": "68ec1461-7914-4ac0-9600-1c6921cf0788",
-        "member_id": "a0ecb47e-9e0b-4c86-8d69-9a2f46146b15",
-        "start_date": "23/01/2024",
-        "end_date": "23/02/2024"
-        
-      },
-      {
-        "id": "2",
-        "book_id": "68ec1461-7914-4ac0-9600-1c6921cf0799",
-        "member_id": "a0ecb47e-9e0b-4c86-8d69-9a2f46146b16",
-        "start_date": "28/01/2024",
-        "end_date": "28/02/2024"
-        
+        "bookTitle": "Harry Potter y la Piedra Filosofal",
+        "memberFullName": "Madrid, Luis",
+        "endDate": "23/02/2024"
       }
     ]
   }

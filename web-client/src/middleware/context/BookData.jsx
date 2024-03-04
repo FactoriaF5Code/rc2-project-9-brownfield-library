@@ -21,7 +21,7 @@ export const BookDataProvider = ({ children }) => {
     return loanService.createLoan(loanRequest);
   }
 
-  const searchLoan = async (loanResponse) => {
+  const searchLoans = async (loanResponse) => {
     const loanService = new LoanService();
     return loanService.searchLoan(loanResponse);
   }
@@ -30,7 +30,7 @@ export const BookDataProvider = ({ children }) => {
     searchBooks,
     createBook,
     createLoan,
-    searchLoan
+    searchLoans
   };
 
   return <BookDataContext.Provider value={value}>{children}</BookDataContext.Provider>;
