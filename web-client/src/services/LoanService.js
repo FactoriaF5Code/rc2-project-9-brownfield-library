@@ -11,7 +11,9 @@ export class LoanService {
     }
 
     async searchLoan(loanResponse) {
-        return axios.get(`${getApiHost()}/api/loans`)
+        console.log(`${getApiHost()}/loans`)
+        console.log(loanResponse)
+        return axios.get(`${getApiHost()}/loans`)
             .then(response => response.data.results);
     }
 }

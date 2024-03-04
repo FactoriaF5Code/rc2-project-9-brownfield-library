@@ -31,10 +31,14 @@ export const LoanMemberTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-                <TableRow>
-                  <TableCell className="table-cell">Título del libro reservado</TableCell>
-                  <TableCell className="table-cell">29/02/2024</TableCell>
-                </TableRow>
+            {loans.map((loan) => {
+              return (
+                <TableRow key={loan.id}>
+                <TableCell className="table-cell">{loan.book_id}</TableCell>
+                <TableCell className="table-cell">{loan.end_date}</TableCell>
+              </TableRow>
+              )
+            })}
           </TableBody>
         </Table>
       </TableContainer>
