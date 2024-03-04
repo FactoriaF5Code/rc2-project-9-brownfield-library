@@ -9,4 +9,9 @@ export class LoanService {
         return axios.post(`${getApiHost()}/api/loans`, loanRequest)
             .then(response => response.data.msg);
     }
+
+    async searchLoan(loanResponse) {
+        return axios.get(`${getApiHost()}/api/loans`)
+            .then(response => response.data.results);
+    }
 }
