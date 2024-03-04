@@ -18,25 +18,25 @@ public class LoanService {
     @Autowired
     private MemberRepository memberRepository;
 
-    public LoanInfoResponse findLoanInfoResponse(UUID bookId, UUID memberId) {
-        List<Loan> loan = loanRepository.findByBookId(bookId);
-        Date currentDate = new Date();
-        // Filtrar los prestamos activos//
-        Loan activeLoan = null;
+    // public LoanInfoResponse findLoanInfoResponse(UUID bookId, UUID memberId) {
+    //     List<Loan> loans = loanRepository.findByBookId(bookId);
+    //     Date currentDate = new Date();
+    //     // Filtrar los prestamos activos//
+    //     Loan activeLoan = null;
 
-        for (Loan loan : loans) {
-            if (loan.getEndDate().after(currentDate)) {
-                activeLoan = loan;
-                break;
-            }
-        }
-        if (activeLoan == null) {
-            return null;
-        }
-        Member member = memberRepository.findByMemberId(member);
-        LoanInfoResponse response = new LoanInfoResponse(member.getFirstName(), member.getLastName(),
-                activeLoan.getEndDate());
-        return response;
-    }
+    //     for (Loan loan : loans) {
+    //         if (loan.getEndDate().isAfter(currentDate)) {
+    //             activeLoan = loan;
+    //             break;
+    //         }
+    //     }
+    //     if (activeLoan == null) {
+    //         return null;
+    //     }
+    //     Member member = memberRepository.findByMemberId(member);
+    //     LoanInfoResponse response = new LoanInfoResponse(member.getFirstName(), member.getLastName(),
+    //             activeLoan.getReturnDate());
+    //     return response;
+    // }
 
 }

@@ -43,7 +43,7 @@ public class LoanController {
         this.memberRepository = memberRepository;
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<CreateLoanResponse> createLoan(@RequestBody CreateLoanRequest request) {
         if (!bookRepository.existsById(UUID.fromString(request.getBookId()))) {
             return ResponseEntity.badRequest()
@@ -62,37 +62,32 @@ public class LoanController {
         return ResponseEntity.ok(new CreateLoanResponse(request.getId()));
     }
 
-    @GetMapping("/{bookId}")
-    public List<Loan> getLoanByBookId(@RequestParam(name = "bookId") UUID bookId) {
-        return loanRepository.findByBookId(bookId);
-    }
+    @GetMapping
+    // ejemplo: /api/loans?bookId=c4a4e597-9aee-4b1e-92de-41d33224c6a1
+    public ResponseEntity<LoanInfoResponse> getLoanInfoResponse(@RequestParam(name="bookId") String bookId) {
+        // buscar el préstamo cuyo bookId es bookId usando loanRepository.findByBookID
+        Optional<Loan> loanOptional = loanRepository.findByBookId(UUID.fromString(bookId));
 
-    @GetMapping("/{memberId}")
-    public List<Loan> getLoanByMemberId(@RequestParam(name = "memberId") UUID memberId) {
-        return loanRepository.findByMemberId(memberId);
-    }
-
-    @GetMapping("/{loanId}")
-    public ResponseEntity<LoanInfoResponse> getLoanInfoResponse(@RequestParam UUID loanId) {
-        Optional<Loan> loanOptional = loanRepository.findById(loanId);
         if (loanOptional.isPresent()) {
             Loan loan = loanOptional.get();
+            // sacar el memberId del préstamo
+            // sacar el nombre del member usando el memberId
             Optional<Member> memberOptional = memberRepository.findById(loan.getMemberId());
             if (memberOptional.isPresent()) {
                 Member member = memberOptional.get();
                 return ResponseEntity.ok(
-                        new LoanInfoResponse(member.getLastName() + ", " + member.getFirstName(), loan.getEndDate()));
+                        new LoanInfoResponse(
+                                member.getFirstName(),
+                                member.getLastName(),
+                                // sacar la fecha de final del préstamo
+                                loan.getEndDate()));
             }
         }
         return ResponseEntity.notFound().build();
     }
-    // buscar el préstamo cuyo bookId es bookId usando loanRepository.findByBookID
 
-    // sacar el memberId del préstamo
 
-    // sacar la fecha de final del préstamo
 
-    // sacar el nombre del member usando el memberId
 
     // construir una respuesta que tenga (memberName ("Pérez, Pepito"), fechaFinal)
 
