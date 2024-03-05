@@ -5,7 +5,7 @@ import { useAuthenticationContext } from "../../../middleware/context/Authentica
 import GoBackButton from "../GoBackButton/GoBackButton";
 
 export const MemberHeader = () => {
-  const { userLoggedIn } = useAuthenticationContext();
+  const { userLoggedIn, getSessionUserName } = useAuthenticationContext();
 
   return (
     <>
@@ -17,10 +17,12 @@ export const MemberHeader = () => {
           <h1> Powered by © Brownfield MegaCorporation</h1>
         </div>
         <GoBackButton />
-        {userLoggedIn ? (
+        {userLoggedIn ? (<div>
+          <span>{getSessionUserName()}</span>
           <Link to="/members/logout">
             <button className="btn-access">logout</button>
           </Link>
+        </div>
         ) : (
           <Link to="/members/login">
             <button className="btn-access">login</button>
