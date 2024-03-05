@@ -31,29 +31,30 @@ public class LoanController {
     }
 
     @PostMapping
-    public ResponseEntity<CreateLoanResponse> createLoan(@RequestBody CreateLoanRequest request) {
-        if (!bookRepository.existsById(UUID.fromString(request.getBookId()))) {
-            return ResponseEntity.badRequest()
-            .build();
-        }
+public ResponseEntity<?> createLoan(@RequestBody CreateLoanRequest request) {
+    if (!bookRepository.existsById(UUID.fromString(request.getBookId()))) {
+        return ResponseEntity.badRequest().body("El libro no existe");
+    }
 
-        Loan loan = new Loan(
-                UUID.fromString(request.getId()),
-                UUID.fromString(request.getBookId()),
-                UUID.fromString(request.getMemberId()));
+    Loan loan = new Loan(
+            UUID.fromString(request.getId()),
+            UUID.fromString(request.getBookId()),
+            UUID.fromString(request.getMemberId()));
 
-        loanRepository.save(loan);
+    loanRepository.save(loan);
 
-        Book book = bookRepository.findById(UUID.fromString(request.getBookId())).get();
-        if (!book.isAvailable()) {
-            return ResponseEntity.badRequest().build();
-        }
-
-
-        bookAvailabilityService.setAsNotAvailable(UUID.fromString(request.getBookId()));
     
-        return ResponseEntity.ok(new CreateLoanResponse(request.getId()));
-    }            
+
+    Book book = bookRepository.findById(UUID.fromString(request.getBookId())).get();
+        if (!book.isAvailable()) {
+            return ResponseEntity.badRequest().body("El libro no está disponible");
+    }
+
+    bookAvailabilityService.setAsNotAvailable(UUID.fromString(request.getBookId()));
+
+    return ResponseEntity.ok(new CreateLoanResponse(request.getId()));
+}        
+
 }
 
 
