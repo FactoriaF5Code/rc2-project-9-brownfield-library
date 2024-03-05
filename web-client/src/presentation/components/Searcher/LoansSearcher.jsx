@@ -39,7 +39,7 @@ export const LoansSearcher = () => {
             <input
               type="search"
               className="searchContainer__Field-Input"
-              placeholder={"Search book by title..."}
+              placeholder={"Search member name..."}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
