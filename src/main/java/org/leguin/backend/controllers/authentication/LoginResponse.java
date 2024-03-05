@@ -1,6 +1,6 @@
 package org.leguin.backend.controllers.authentication;
 
-import org.leguin.backend.services.SessionInfo;
+import org.leguin.backend.services.login.SessionInfo;
 
 public class LoginResponse {
     private String loginType;
