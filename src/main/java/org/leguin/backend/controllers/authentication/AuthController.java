@@ -2,7 +2,7 @@ package org.leguin.backend.controllers.authentication;
 
 import java.util.Optional;
 
-import org.leguin.backend.services.LoginMember;
+import org.leguin.backend.services.SessionInfo;
 import org.leguin.backend.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,11 +27,11 @@ public class AuthController {
     @PostMapping("/auth/login")
     public LoginResponse login(@RequestBody LoginRequest request) {
 
-        Optional<LoginMember> loginMember = loginService.login(request.getUser(), request.getPassword());
-        if (loginMember.isPresent()) {
+        Optional<SessionInfo> loginSession = loginService.login(request.getUser(), request.getPassword());
+        if (loginSession.isPresent()) {
             LoginResponse response = new LoginResponse();
             response.setLoginType("member");
-            response.setSession(loginMember.get());
+            response.setSession(loginSession.get());
             return response;
         }
 

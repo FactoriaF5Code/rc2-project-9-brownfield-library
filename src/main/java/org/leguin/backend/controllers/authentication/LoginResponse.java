@@ -1,17 +1,17 @@
 package org.leguin.backend.controllers.authentication;
 
-import org.leguin.backend.services.LoginMember;
+import org.leguin.backend.services.SessionInfo;
 
 public class LoginResponse {
     private String loginType;
     private String error;
-    private LoginMember session;
+    private SessionInfo session;
 
-    public LoginMember getSession() {
+    public SessionInfo getSession() {
         return session;
     }
 
-    public void setSession(LoginMember session) {
+    public void setSession(SessionInfo session) {
         this.session = session;
     }
 
