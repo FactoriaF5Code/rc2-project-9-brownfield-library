@@ -16,7 +16,7 @@ export const AuthenticationProvider = ({children}) => {
         if (!(loginResponse.error === "true")) {
             setUserLoggedIn(true);
             setUserType(loginResponse.loginType);
-            setSession({...session, userName: loginResponse.session.userName })
+            setSession({...session, userName: loginResponse.session.userName || "curator" })
             return true;
         }
         return false;
