@@ -48,8 +48,8 @@ public class GetLoanInfoByBookIdTest {
 
         api.perform(get("/api/loans?bookId=98e2af83-1a6b-4fce-8579-fbcfeb09c562"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.member", equalTo("Pérez, Pepito")))
-                .andExpect(jsonPath("$.returnDate", equalTo("2024-03-31")));
+                .andExpect(jsonPath("$.member", equalTo("Pepito Pérez")))
+                .andExpect(jsonPath("$.returnDate", equalTo("2024-04-04")));
     }
 
 }

@@ -6,7 +6,6 @@ public class LoanInfoResponse {
     private String member;
     private String returnDate;
 
-    // TODO: Unit Testing
     public LoanInfoResponse(String firstName, String lastName, LocalDate returnDate) {
         this.member = firstName + " " + lastName;
         this.returnDate = returnDate.toString();

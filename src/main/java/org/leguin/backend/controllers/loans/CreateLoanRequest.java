@@ -14,9 +14,4 @@ public class CreateLoanRequest {
     public String getMemberId() {
         return memberId;
     }
-
-    
-
-    
-
 }
