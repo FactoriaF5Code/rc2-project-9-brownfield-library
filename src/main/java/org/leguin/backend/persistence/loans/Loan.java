@@ -14,16 +14,9 @@ public class Loan {
     private UUID id;
     private UUID bookId;
     private UUID memberId;
-    public UUID getMemberId() {
-        return memberId;
-    }
 
     private LocalDate startDate;
     private LocalDate endDate;
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
 
     public Loan() {
     }
