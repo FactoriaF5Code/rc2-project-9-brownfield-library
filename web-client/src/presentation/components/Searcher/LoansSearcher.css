@@ -2,6 +2,11 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    width: 90rem !important;
+}
+
+.searchContainer__Field{
+    width: 88rem !important;
 }
 
 .loansTitle{

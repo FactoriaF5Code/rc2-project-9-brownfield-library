@@ -31,7 +31,7 @@ export const LoansSearcher = () => {
     <div>
       <section className="loansSearchContainer">
         <div>
-          <h3 className="loansTitle">Return Books</h3>
+          <h3 className="loansTitle" id="loansTitle">Return Loans</h3>
         </div>
         <form onSubmit={handleSearch}>
           <div className="searchContainer__Field">
@@ -39,7 +39,7 @@ export const LoansSearcher = () => {
             <input
               type="search"
               className="searchContainer__Field-Input"
-              placeholder={"Search member name..."}
+              placeholder={"Search loans by member name..."}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />

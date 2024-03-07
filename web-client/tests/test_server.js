@@ -32,7 +32,18 @@ const handlers = [
             error: null,
             loginType: "curator"
         });
-    })
+    }),
+    http.get(`${getApiHost()}/api/loans?q=Juan`, () => {
+        return HttpResponse.json({
+            results: [
+                {
+                    title: "La Mano Izquierda de la Oscuridad",
+                    firstName: "Juan",
+                    lastName: "Pérez"
+                }
+            ]
+        });
+    }),
 ];
 
 const server = setupServer(...handlers);

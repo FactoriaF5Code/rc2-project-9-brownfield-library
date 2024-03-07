@@ -4,6 +4,6 @@ import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 
 export const BookSearchIcon = () => {
   return (
-    <CollectionsBookmarkIcon className='toggleIcon' sx={{fontSize: 30}}/>
+    <CollectionsBookmarkIcon color="success"className='toggleIcon'  sx={{fontSize: 30}}/>
   );
 };
