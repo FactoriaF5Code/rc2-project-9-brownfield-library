@@ -13,6 +13,8 @@ import org.leguin.backend.persistence.members.Member;
 import org.leguin.backend.persistence.members.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.time.LocalDate;
 import java.util.UUID;
 
 @ApiTest
@@ -44,12 +46,14 @@ public class GetLoanInfoByBookIdTest {
         loanRepository.save(new Loan(
                 UUID.fromString("33b7795b-dcaf-4f96-b68f-54ac27f7072b"),
                 UUID.fromString("98e2af83-1a6b-4fce-8579-fbcfeb09c562"),
-                UUID.fromString("089535e3-01f9-4463-93fa-e66cc67193f5")));
+                UUID.fromString("089535e3-01f9-4463-93fa-e66cc67193f5"),
+                LocalDate.of(2024, 1, 1),
+                LocalDate.of(2024, 1, 31)));
 
         api.perform(get("/api/loans?bookId=98e2af83-1a6b-4fce-8579-fbcfeb09c562"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.member", equalTo("Pepito Pérez")))
-                .andExpect(jsonPath("$.returnDate", equalTo("2024-04-04")));
+                .andExpect(jsonPath("$.returnDate", equalTo("2024-01-31")));
     }
 
 }

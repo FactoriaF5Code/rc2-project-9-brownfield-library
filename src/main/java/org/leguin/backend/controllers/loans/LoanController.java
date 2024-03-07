@@ -10,6 +10,7 @@ import org.leguin.backend.persistence.loans.LoanRepository;
 import org.leguin.backend.persistence.members.Member;
 import org.leguin.backend.persistence.members.MemberRepository;
 import org.leguin.backend.services.BookAvailabilityService;
+import org.leguin.backend.services.DateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,16 +29,19 @@ public class LoanController {
     private BookRepository bookRepository;
     private BookAvailabilityService bookAvailabilityService;
     private MemberRepository memberRepository;
+    private DateService dateService;
 
     public LoanController(
             @Autowired LoanRepository loanRepository,
             @Autowired BookAvailabilityService bookAvailabilityService,
             @Autowired BookRepository bookRepository,
-            @Autowired MemberRepository memberRepository) {
+            @Autowired MemberRepository memberRepository,
+            @Autowired DateService dateService) {
         this.loanRepository = loanRepository;
         this.bookAvailabilityService = bookAvailabilityService;
         this.bookRepository = bookRepository;
         this.memberRepository = memberRepository;
+        this.dateService = dateService;
     }
 
     @PostMapping
@@ -50,7 +54,9 @@ public class LoanController {
         Loan loan = new Loan(
                 UUID.fromString(request.getId()),
                 UUID.fromString(request.getBookId()),
-                UUID.fromString(request.getMemberId()));
+                UUID.fromString(request.getMemberId()),
+                dateService.currentDate(),
+                dateService.currentDate().plusDays(30));
 
         loanRepository.save(loan);
 
