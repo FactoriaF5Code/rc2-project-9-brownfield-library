@@ -8,7 +8,7 @@
 }
 
 .btn-access {
-    width: auto;
+    width: 23rem;
     height: 4.5rem;
     background-color: var(--color-green);
     color: var(--color-mint);
@@ -17,9 +17,6 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.5s ease-in-out;
-    padding: 0 1rem;
-    display: flex;
-    align-items: center;
 }
 
 .btn-access.blue { 
@@ -28,8 +25,4 @@
 
 .btn-access:hover {
     background-color: var(--color-lightgreen);
-}
-
-.btn-access img {
-    margin: 0;
 }

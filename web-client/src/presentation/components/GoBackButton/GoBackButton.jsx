@@ -1,4 +1,4 @@
-import "./GoButtonBack.css";
+import "./GoBackButton.css";
 import { useNavigate } from 'react-router-dom';
 import Flecha from "../../assets/FlechaBack.svg";
  
@@ -6,7 +6,7 @@ function GoBackButton() {
   let navigate = useNavigate();
 
   return (
-    <button className="btn-back" onClick={() => navigate(-1)}>
+    <button className="btn-header" onClick={() => navigate(-1)}>
       <img src={Flecha} alt="Ir atras" />
     </button>
   );
