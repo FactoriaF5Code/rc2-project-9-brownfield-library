@@ -3,6 +3,7 @@ package org.leguin.backend.controllers.loans;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.leguin.backend.persistence.Book;
 import org.leguin.backend.persistence.BookRepository;
 import org.leguin.backend.persistence.loans.Loan;
 import org.leguin.backend.persistence.loans.LoanRepository;
@@ -53,10 +54,16 @@ public class LoanController {
 
         loanRepository.save(loan);
 
-        bookAvailabilityService.setAsNotAvailable(UUID.fromString(request.getBookId()));
+        Book book = bookRepository.findById(UUID.fromString(request.getBookId())).get();
+        if (!book.isAvailable()) {
+            return ResponseEntity.badRequest().build();
+        }
 
+
+        bookAvailabilityService.setAsNotAvailable(UUID.fromString(request.getBookId()));
+    
         return ResponseEntity.ok(new CreateLoanResponse(request.getId()));
-    }
+    }            
 
     @GetMapping
     public ResponseEntity<LoanInfoResponse> getLoanInfoResponse(@RequestParam(name="bookId") String bookId) {
@@ -77,3 +84,5 @@ public class LoanController {
         return ResponseEntity.notFound().build();
     }
 }
+
+

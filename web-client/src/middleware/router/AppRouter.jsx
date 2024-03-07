@@ -16,11 +16,12 @@ import MemberLogin from '../../presentation/pages/login/MemberLogin';
 import { MemberManager } from '../../presentation/pages/member_manager/MemberManager';
 import { EditMember } from "../../presentation/pages/member_manager/EditMember";
 import { EditLoan } from '../../presentation/pages/loan_manager/EditLoan';
+import { MembersLoan } from "../../presentation/pages/MembersLoan/MembersLoan";
 
 export const AppRouter = () => {
   return (
     <BrowserRouter>
-      <Routes>
+      <Routes>-
         {/* home / book search */}
         <Route path="/" element={<CoverPage />} />
         <Route path="/curators/" element={<CuratorPortal />}>
@@ -43,6 +44,7 @@ export const AppRouter = () => {
           <Route element={<PrivateRoute loginPath="/members/login" />}>
             <Route index element={<MemberHome />} />
             <Route path="/members/books" element={<BookSearcher />} />
+            <Route path="loans" element={<MembersLoan />} />
             {/* <Route path="/members/books/:id" element={<BookDetailsPage />} /> */}
             {/* mis préstamos */}
             {/* mis reservas */}
