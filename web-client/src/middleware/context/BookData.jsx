@@ -20,7 +20,11 @@ export const BookDataProvider = ({ children }) => {
     const loanService = new LoanService();
     return loanService.createLoan(loanRequest);
   }
-
+  const searchLoanInfo = async (bookId) => {
+    const bookService = new BookService();
+    return bookService.searchLoanInfo(bookId);
+  }
+  
   const searchLoans = async (loanResponse) => {
     const loanService = new LoanService();
     return loanService.searchLoan(loanResponse);
@@ -30,6 +34,7 @@ export const BookDataProvider = ({ children }) => {
     searchBooks,
     createBook,
     createLoan,
+    searchInfoLoan: searchLoanInfo,
     searchLoans
   };
 
