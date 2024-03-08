@@ -1,9 +1,8 @@
 package org.leguin.backend.integration;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.leguin.backend.persistence.members.Member;
-import org.leguin.backend.persistence.members.MemberRepository;
+import org.leguin.backend.persistence.members.User;
+import org.leguin.backend.persistence.members.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +21,7 @@ import java.util.UUID;
 public class LoginTest {
 
     @Autowired
-    private MemberRepository memberRepository;
+    private UserRepository userRepository;
 
     @Autowired
     private MockMvc api;
@@ -31,8 +30,8 @@ public class LoginTest {
     public void loginTest() throws Exception {
 
         // given
-        memberRepository.save(
-                new Member(
+        userRepository.save(
+                new User(
                         UUID.fromString("36d4688d-536c-41de-a330-6dfc2ae56645"),
                         "Elena",
                         "Moreno",

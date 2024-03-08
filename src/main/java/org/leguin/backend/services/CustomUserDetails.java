@@ -3,15 +3,15 @@ package org.leguin.backend.services;
 import java.util.Collection;
 import java.util.Collections;
 
-import org.leguin.backend.persistence.members.Member;
+import org.leguin.backend.persistence.members.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class CustomUserDetails implements UserDetails {
-    private Member member;
+    private User member;
 
-    public CustomUserDetails(Member member) {
+    public CustomUserDetails(User member) {
         this.member = member;
     }
 

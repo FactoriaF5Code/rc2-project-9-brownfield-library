@@ -11,12 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AuthController {
-    private CuratorLoginService curatorLoginService;
     private LoginService loginService;
 
-    public AuthController(@Autowired CuratorLoginService curatorLoginService,
-            @Autowired LoginService loginService) {
-        this.curatorLoginService = curatorLoginService;
+    public AuthController(@Autowired LoginService loginService) {
         this.loginService = loginService;
     }
 

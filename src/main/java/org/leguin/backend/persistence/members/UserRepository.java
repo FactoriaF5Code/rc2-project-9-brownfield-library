@@ -8,6 +8,6 @@ import java.util.List;
 
 
 @Repository
-public interface MemberRepository extends JpaRepository<Member, UUID>{
-    List<Member> findByEmail(String email);    
+public interface UserRepository extends JpaRepository<User, UUID>{
+    List<User> findByEmail(String email);    
 }

@@ -2,8 +2,8 @@ package org.leguin.backend.services;
 
 import java.util.List;
 
-import org.leguin.backend.persistence.members.Member;
-import org.leguin.backend.persistence.members.MemberRepository;
+import org.leguin.backend.persistence.members.User;
+import org.leguin.backend.persistence.members.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,16 +14,16 @@ import org.springframework.stereotype.Service;
 public class CustomUserDetailService implements UserDetailsService {
 
     @Autowired
-    private MemberRepository repository;
+    private UserRepository repository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        List <Member> results = repository.findByEmail(username);
+        List <User> results = repository.findByEmail(username);
         if (results.isEmpty()) {
             throw new UsernameNotFoundException(username);
         }
-        Member member = results.get(0);
+        User member = results.get(0);
 
         return new CustomUserDetails(member);
 

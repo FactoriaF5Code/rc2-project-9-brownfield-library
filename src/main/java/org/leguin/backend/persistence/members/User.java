@@ -11,8 +11,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "members")
-public class Member {
+@Table(name = "users")
+public class User {
     @Id
     private UUID id;
     private String firstName;
@@ -34,10 +34,10 @@ public class Member {
         return password;
     }
 
-    public Member() {
+    public User() {
     }
 
-    public Member(UUID id, String firstName, String lastName, String address, String email, String phone, String password) {
+    public User(UUID id, String firstName, String lastName, String address, String email, String phone, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

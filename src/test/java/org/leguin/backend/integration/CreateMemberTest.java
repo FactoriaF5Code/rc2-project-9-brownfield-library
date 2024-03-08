@@ -11,8 +11,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
-import org.leguin.backend.persistence.members.Member;
-import org.leguin.backend.persistence.members.MemberRepository;
+import org.leguin.backend.persistence.members.User;
+import org.leguin.backend.persistence.members.UserRepository;
 import org.leguin.backend.persistence.members.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -25,7 +25,7 @@ public class CreateMemberTest {
     private MockMvc api;
 
     @Autowired
-    private MemberRepository repository;
+    private UserRepository repository;
 
     @Test
     public void create_member() throws Exception {
@@ -47,7 +47,7 @@ public class CreateMemberTest {
                         jsonPath("$.msg",
                                 equalTo("Member d3f212d3-149e-4919-98dd-97f8498f53b5 created successfully.")));
 
-        Optional<Member> member = repository.findById(UUID.fromString("d3f212d3-149e-4919-98dd-97f8498f53b5"));
+        Optional<User> member = repository.findById(UUID.fromString("d3f212d3-149e-4919-98dd-97f8498f53b5"));
         assertTrue(member.isPresent());
         assertThat(member.get().getRole(),equalTo(Role.MEMBER));
     }
