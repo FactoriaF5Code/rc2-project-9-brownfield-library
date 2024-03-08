@@ -1,11 +1,26 @@
 import "./LoanModal.css";
-import equis from "../../assets/equissss.svg";
+import CrossCloseModal from "../../assets/CrossCloseModal.svg";
+import { useEffect, useState } from "react";
+import { useBookDataContext } from "../../../middleware/context/BookData";
+import axios from "axios";
 
 export default function LoanModal({ book, onclose }) {
+  const { searchInfoLoan } = useBookDataContext();
+  const { id, title } = book;
+  const [loanInfo, setLoanInfo] = useState({});
+
+  useEffect(() => {
+    if (book && book.id) {
+      searchInfoLoan(book.id)
+        .then((response) => {
+          console.log(JSON.stringify(response)); 
+          setLoanInfo(response);
+        })
+        .catch((error) => console.log("ha fallado"));
+    }
+  }, [id]);
 
   if (book && !book.available) {
-    const { title, member, returnDate, contact } = book;
-
     return (
       <>
         <section className="overlay">
@@ -15,22 +30,22 @@ export default function LoanModal({ book, onclose }) {
                 <img
                   className="cerrarModal"
                   onClick={onclose}
-                  src={equis}
+                  src={CrossCloseModal}
                   alt="x"
                 />
               </div>
               <div className="contenedorInformación">
                 <div>
                   <h2>Title</h2>
-                  <input type="text" placeholder={title} disabled />
+                  <p>{title}</p>
                 </div>
                 <div>
                   <h2>Member</h2>
-                  <input type="text" placeholder={member} disabled />
+                  <p>{loanInfo.member}</p>
                 </div>
                 <div>
                   <h2>Return Date</h2>
-                  <input type="text" placeholder={returnDate} disabled />
+                  <p>{loanInfo.returnDate}</p>
                 </div>
               </div>
             </div>

@@ -23,4 +23,9 @@ export class BookService {
             .then(response => response.data.msg)
     }
 
+    async searchLoanInfo(id) {
+        return axios.get(`${getApiHost()}/api/loans?bookId=${id}`)
+        .then(response => response.data)
+    }
+
 }

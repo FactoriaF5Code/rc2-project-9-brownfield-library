@@ -20,12 +20,12 @@ export const MemberHeader = () => {
         {userLoggedIn ? (<div>
           <span>{getSessionUserName()}</span>
           <Link to="/members/logout">
-            <button className="btn-access">logout</button>
+            <button className="btn-header">logout</button>
           </Link>
         </div>
         ) : (
           <Link to="/members/login">
-            <button className="btn-access">login</button>
+            <button className="btn-header">login</button>
           </Link>
         )}
       </header>

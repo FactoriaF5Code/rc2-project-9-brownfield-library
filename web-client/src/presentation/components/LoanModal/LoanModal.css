@@ -45,35 +45,16 @@
   margin-bottom: 5px;
 }
 
-.contenedorInformación input {
+.contenedorInformación p {
   width: 350px;
   height: 40px;
   box-shadow: inset 0 0.5px 0.5px #acacac;
   background-color: rgba(250, 250, 250, 0.48);
   border-radius: 8px;
   border: 1px solid #acacac;
-}
-
-.contenedorInformación input::placeholder {
-  text-decoration: none;
   color: #000;
   font-size: 20px;
+  display: flex;
+  align-items: center;
 }
 
-.buttonReturn {
-  background-color: #11a468;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  width: 130px;
-  height: 50px;
-  font-weight: bold;
-  font-size: 20px;
-  cursor: pointer;
-  transition: background-color 0.5s ease-in-out;
-  margin-top: 30px;
-}
-
-.buttonReturn:hover {
-  background-color: var(--color-lightgreen);
-}
