@@ -31,13 +31,6 @@ public class AuthController {
             return response;
         }
 
-        if (curatorLoginService.authenticate(request.getUser(), request.getPassword())) {
-            LoginResponse response = new LoginResponse();
-            response.setLoginType("curator");
-            response.setSession(new SessionInfo("Curator", "@brownfield"));
-            return response;
-        }
-
         return LoginResponse.fail();
     }
 

@@ -3,8 +3,13 @@ import { getApiHost } from '../middleware/context/utils';
 
 export class BookService {
 
-    async searchBooks(query) {
-        return axios.get(`${getApiHost()}/api/books?q=${query}`)
+    async searchBooks(query, authenticationHeader) {
+        const config = {
+            headers: {
+                "Authorization": authenticationHeader
+            }
+        }
+        return axios.get(`${getApiHost()}/api/books?q=${query}`, config)
             .then(response => response.data.results);
     }
 

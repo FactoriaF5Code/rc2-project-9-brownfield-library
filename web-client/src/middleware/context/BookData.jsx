@@ -2,13 +2,16 @@ import { createContext, useContext } from "react";
 import { BookService } from "../../services/BookService";
 import { LoanService } from "../../services/LoanService";
 import { PropTypes } from 'prop-types';
+import { useAuthenticationContext } from "./AuthenticationContext";
 const BookDataContext = createContext();
 
 export const BookDataProvider = ({ children }) => {
 
+  const { getAuthenticationHeader } = useAuthenticationContext();
+
   const searchBooks = async (query) => {
     const bookService = new BookService();
-    return bookService.searchBooks(query);
+    return bookService.searchBooks(query, getAuthenticationHeader());
   };
 
   const createBook = async (bookRequest) => {
