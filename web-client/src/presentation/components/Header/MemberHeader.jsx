@@ -16,18 +16,23 @@ export const MemberHeader = () => {
           </Link>
           <h1> Powered by © Brownfield MegaCorporation</h1>
         </div>
-        <GoBackButton />
-        {userLoggedIn ? (<div>
-          <span>{getSessionUserName()}</span>
+        <div className="nav-header">
+        {userLoggedIn ? (
+          <>
+          <div className="user-name">{getSessionUserName()}</div>
+        <div>
           <Link to="/members/logout">
             <button className="btn-header">logout</button>
           </Link>
         </div>
+        </>
         ) : (
           <Link to="/members/login">
             <button className="btn-header">login</button>
           </Link>
         )}
+        <GoBackButton />
+        </div>
       </header>
     </>
   );
