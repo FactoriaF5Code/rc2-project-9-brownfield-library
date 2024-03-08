@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.leguin.backend.persistence.Book;
 import org.leguin.backend.persistence.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 @ApiTest
@@ -31,6 +32,7 @@ class BookSearchTest {
 	}
 
 	@Test
+	
 	void book_search_by_name() throws Exception {
 
 		bookRepository.saveAll(List.of(
