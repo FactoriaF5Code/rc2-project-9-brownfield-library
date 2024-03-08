@@ -2,7 +2,11 @@ package org.leguin.backend.persistence.members;
 
 import java.util.UUID;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -18,6 +22,13 @@ public class Member {
     private String email;
     private String phone;
     private String password;
+    @Enumerated(EnumType.STRING)
+    @ColumnDefault(value = "MEMBER")
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
 
     public String getPassword() {
         return password;
@@ -34,6 +45,7 @@ public class Member {
         this.email = email;
         this.phone = phone;
         this.password = password;
+        this.role = Role.MEMBER;
     }
 
     public String getFirstName() {
