@@ -1,6 +1,7 @@
 package org.leguin.backend.integration;
 
 import org.junit.jupiter.api.Test;
+import org.leguin.backend.persistence.members.Role;
 import org.leguin.backend.persistence.members.User;
 import org.leguin.backend.persistence.members.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,38 +21,72 @@ import java.util.UUID;
 @AutoConfigureMockMvc
 public class LoginTest {
 
-    @Autowired
-    private UserRepository userRepository;
+        @Autowired
+        private UserRepository userRepository;
 
-    @Autowired
-    private MockMvc api;
+        @Autowired
+        private MockMvc api;
 
-    @Test
-    public void loginTest() throws Exception {
+        @Test
+        public void loginTest() throws Exception {
 
-        // given
-        userRepository.save(
-                new User(
-                        UUID.fromString("36d4688d-536c-41de-a330-6dfc2ae56645"),
-                        "Elena",
-                        "Moreno",
-                        "Calle de las huertas",
-                        "elena@email.com",
-                        "612345678",
-                        "pass4elena"));
+                // given
+                userRepository.save(
+                                new User(
+                                                UUID.fromString("36d4688d-536c-41de-a330-6dfc2ae56645"),
+                                                "Elena",
+                                                "Moreno",
+                                                "Calle de las huertas",
+                                                "elena@email.com",
+                                                "612345678",
+                                                "pass4elena"));
 
-        // when
-        api.perform(post("/auth/login")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("""
-                        {
-                        	"user": "elena@email.com",
-                        	"password": "pass4elena"
-                        }
-                        """))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.session.userName",equalTo("Elena Moreno")));
+                // when
+                api.perform(post("/auth/login")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content("""
+                                                {
+                                                	"user": "elena@email.com",
+                                                	"password": "pass4elena"
+                                                }
+                                                """))
+                                .andExpect(status().isOk())
+                                .andExpect(jsonPath("$.loginType", equalTo("member")))
+                                .andExpect(jsonPath("$.session.userName", equalTo("Elena Moreno")));
 
-    }
+        }
+
+        @Test
+        public void curatorLoginTest() throws Exception {
+
+                // given
+                User user = new User(
+                                UUID.fromString("36d4688d-536c-41de-a330-6dfc2ae56645"),
+                                "Elena",
+                                "Moreno",
+                                "Calle de las huertas",
+                                "elena@email.com",
+                                "612345678",
+                                "pass4elena");
+
+                user.setRole(Role.CURATOR);
+
+                userRepository.save(
+                                user);
+
+                // when
+                api.perform(post("/auth/login")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content("""
+                                                {
+                                                	"user": "elena@email.com",
+                                                	"password": "pass4elena"
+                                                }
+                                                """))
+                                .andExpect(status().isOk())
+                                .andExpect(jsonPath("$.loginType", equalTo("curator")))
+                                .andExpect(jsonPath("$.session.userName", equalTo("Elena Moreno")));
+
+        }
 
 }

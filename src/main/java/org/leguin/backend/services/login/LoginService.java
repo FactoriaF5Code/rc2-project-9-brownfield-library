@@ -13,15 +13,14 @@ public class LoginService {
 
     private UserRepository userRepository;
 
-
     public LoginService(@Autowired UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public Optional<SessionInfo> login(String email, String password) {
+    public Optional<LoginInfo> login(String email, String password) {
         // buscar si el usuario con este mail existe
         List<User> results = userRepository.findByEmail(email);
-        if (results.isEmpty()){
+        if (results.isEmpty()) {
             return Optional.empty();
         }
         User member = results.get(0);
@@ -29,7 +28,9 @@ public class LoginService {
             return Optional.empty();
         }
 
-        return Optional.of(new SessionInfo(member.getFirstName(), member.getLastName()));
+        return Optional.of(
+                new LoginInfo(member.getRole().toString().toLowerCase(),
+                        new SessionInfo(member.getFirstName(), member.getLastName())));
     }
-    
+
 }
