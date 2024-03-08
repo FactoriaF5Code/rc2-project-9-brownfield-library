@@ -2,8 +2,9 @@ package org.leguin.backend.controllers.authentication;
 
 import java.util.Optional;
 
+import org.leguin.backend.services.login.LoginInfo;
 import org.leguin.backend.services.login.LoginService;
-import org.leguin.backend.services.login.SessionInfo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,30 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AuthController {
-    private CuratorLoginService curatorLoginService;
     private LoginService loginService;
 
-    public AuthController(@Autowired CuratorLoginService curatorLoginService,
-            @Autowired LoginService loginService) {
-        this.curatorLoginService = curatorLoginService;
+    public AuthController(@Autowired LoginService loginService) {
         this.loginService = loginService;
     }
 
     @PostMapping("/auth/login")
     public LoginResponse login(@RequestBody LoginRequest request) {
 
-        Optional<SessionInfo> loginSession = loginService.login(request.getUser(), request.getPassword());
-        if (loginSession.isPresent()) {
+        Optional<LoginInfo> loginInfo = loginService.login(request.getUser(), request.getPassword());
+        if (loginInfo.isPresent()) {
             LoginResponse response = new LoginResponse();
-            response.setLoginType("member");
-            response.setSession(loginSession.get());
-            return response;
-        }
-
-        if (curatorLoginService.authenticate(request.getUser(), request.getPassword())) {
-            LoginResponse response = new LoginResponse();
-            response.setLoginType("curator");
-            response.setSession(new SessionInfo("Curator", "@brownfield"));
+            response.setLoginType(loginInfo.get().getLoginType());
+            response.setSession(loginInfo.get().getSessionInfo());
             return response;
         }
 
