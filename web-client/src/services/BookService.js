@@ -13,8 +13,13 @@ export class BookService {
             .then(response => response.data.results);
     }
 
-    async createBook(bookRequest) {
-        return axios.post(`${getApiHost()}/api/books`, bookRequest)
+    async createBook(bookRequest, authenticationHeader) {
+        const config = {
+            headers: {
+                "Authorization": authenticationHeader
+            }
+        }
+        return axios.post(`${getApiHost()}/api/books`, bookRequest, config)
             .then(response => response.data.msg)
     }
 

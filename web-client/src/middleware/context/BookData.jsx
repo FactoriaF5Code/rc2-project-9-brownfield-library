@@ -16,17 +16,17 @@ export const BookDataProvider = ({ children }) => {
 
   const createBook = async (bookRequest) => {
     const bookService = new BookService();
-    return bookService.createBook(bookRequest);
+    return bookService.createBook(bookRequest, getAuthenticationHeader());
   };
 
   const createLoan = async (loanRequest) => {
     const loanService = new LoanService();
-    return loanService.createLoan(loanRequest);
+    return loanService.createLoan(loanRequest, getAuthenticationHeader());
   }
 
   const searchLoans = async (loanResponse) => {
     const loanService = new LoanService();
-    return loanService.searchLoan(loanResponse);
+    return loanService.searchLoan(loanResponse, getAuthenticationHeader());
   }
 
   const value = {
