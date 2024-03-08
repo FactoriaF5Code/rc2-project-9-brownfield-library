@@ -7,8 +7,8 @@ import org.leguin.backend.persistence.Book;
 import org.leguin.backend.persistence.BookRepository;
 import org.leguin.backend.persistence.loans.Loan;
 import org.leguin.backend.persistence.loans.LoanRepository;
-import org.leguin.backend.persistence.members.Member;
-import org.leguin.backend.persistence.members.MemberRepository;
+import org.leguin.backend.persistence.members.User;
+import org.leguin.backend.persistence.members.UserRepository;
 import org.leguin.backend.services.BookAvailabilityService;
 import org.leguin.backend.services.DateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,19 +28,19 @@ public class LoanController {
     private LoanRepository loanRepository;
     private BookRepository bookRepository;
     private BookAvailabilityService bookAvailabilityService;
-    private MemberRepository memberRepository;
+    private UserRepository userRepository;
     private DateService dateService;
 
     public LoanController(
             @Autowired LoanRepository loanRepository,
             @Autowired BookAvailabilityService bookAvailabilityService,
             @Autowired BookRepository bookRepository,
-            @Autowired MemberRepository memberRepository,
+            @Autowired UserRepository userRepository,
             @Autowired DateService dateService) {
         this.loanRepository = loanRepository;
         this.bookAvailabilityService = bookAvailabilityService;
         this.bookRepository = bookRepository;
-        this.memberRepository = memberRepository;
+        this.userRepository = userRepository;
         this.dateService = dateService;
     }
 
@@ -77,13 +77,13 @@ public class LoanController {
 
         if (loanOptional.isPresent()) {
             Loan loan = loanOptional.get();
-            Optional<Member> memberOptional = memberRepository.findById(loan.getMemberId());
-            if (memberOptional.isPresent()) {
-                Member member = memberOptional.get();
+            Optional<User> userOptional = userRepository.findById(loan.getMemberId());
+            if (userOptional.isPresent()) {
+                User user = userOptional.get();
                 return ResponseEntity.ok(
                         new LoanInfoResponse(
-                                member.getFirstName(),
-                                member.getLastName(),
+                                user.getFirstName(),
+                                user.getLastName(),
                                 loan.getEndDate()));
             }
         }
