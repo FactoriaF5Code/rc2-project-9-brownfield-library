@@ -1,22 +1,6 @@
 header {
   background-color: var(--color-mint) !important;
   padding: 40px 60px;
-}
-
-header img {
-  max-width: 300px;
-  margin-bottom: 1.5rem;
-}
-
-header h1 {
-  color: var(--color-darkgreen);
-  font-size: 14px;
-  font-weight: 400;
-}
-
-header {
-  background-color: var(--color-mint) !important;
-  padding: 40px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -67,14 +51,19 @@ header h1 {
 }
 
 .nav-header {
-    width: 30%;
-    display: flex;
-    justify-content: right;
-    gap: 15px;
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+  align-items: center;
 }
 
-.user-name {
-    color: var(--color-darkgreen);
-    font-size: 1.8rem;
-    line-height: 4.5rem;
+.nav-header .user-name {
+  color: var(--color-darkgreen);
+  font-size: 1.8rem;
+  line-height: 4.5rem;
+}
+
+.nav-header .user-btns {
+    display: flex;
+    gap: 15px;
 }
