@@ -1,21 +1,32 @@
 import { screen } from "@testing-library/react";
 import { expect, test } from "vitest";
 /* import userEvent from "@testing-library/user-event"; */
-import "../test_server"
+import "../test_server";
 import { LoansSearcher } from "../../src/presentation/components/Searcher/LoansSearcher";
-import { renderMemberWithContext } from '../test_utils';
-
+import { renderMemberWithContext } from "../test_utils";
+import userEvent from "@testing-library/user-event";
 
 test("Search view", () => {
-    renderMemberWithContext(<LoansSearcher />);
+  renderMemberWithContext(<LoansSearcher />);
 
-    const searchBar = screen.getByPlaceholderText(/Search member name/i);
+  const searchBar = screen.getByPlaceholderText(/Search loans by member name/i);
 
-    expect(searchBar).toBeInTheDocument();
+  expect(searchBar).toBeInTheDocument();
 
-    expect(screen.queryByText(/Juan Pérez/)).not.toBeInTheDocument();
+  expect(screen.queryByText(/Juan Pérez/)).not.toBeInTheDocument();
 });
 
+test("we can search for a loan by member name", async () => {
+  renderMemberWithContext(<LoansSearcher />);
+
+  const searchBar = screen.getByPlaceholderText(/Search loans by member name/i);
+  const searchIcon = screen.getByAltText(/búsqueda icono/i);
+
+  await userEvent.type(searchBar, "Juan");
+  userEvent.click(searchIcon);
+
+  expect(await screen.findByText(/Juan/i)).toBeInTheDocument();
+});
 
 /* test("we can search for a book", async () => {
     renderWithContext(<BookSearcher />);

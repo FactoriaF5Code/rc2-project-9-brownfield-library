@@ -11,7 +11,7 @@ export const LoansSearcher = () => {
   const [error, setError] = useState(null);
   const [books, setBooks] = useState([]);
   const [members, setMembers] = useState([]);
-  const { searchBooks } = useBookDataContext();
+  const searchBooks  = useBookDataContext();
   const { searchMembers } = useMemberDataContext();
 
   const handleSearch = async (event) => {
@@ -23,7 +23,7 @@ export const LoansSearcher = () => {
       const membersResult = await searchMembers(searchTerm);
       setMembers(membersResult);
     } catch (error) {
-      setError("an error occurred " + err);
+      setError("an error occurred " + error);
     }
   };
 
