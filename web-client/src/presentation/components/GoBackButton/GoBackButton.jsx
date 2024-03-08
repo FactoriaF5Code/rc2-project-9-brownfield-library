@@ -1,4 +1,4 @@
-import "./GoBackButton.css";
+import "../Header/Header.css";
 import { useNavigate } from 'react-router-dom';
 import Flecha from "../../assets/FlechaBack.svg";
  
