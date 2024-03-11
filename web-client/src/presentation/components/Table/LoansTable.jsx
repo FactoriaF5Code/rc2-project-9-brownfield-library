@@ -14,16 +14,16 @@ import LoanModal from "../LoanModal/LoanModal";
 
 export const LoansTable = ({ books, members }) => {
   const tableHeaders = ["Title", "Member"];
-  const [selectedState, setSelectedState] = useState(null);
+  const [selectedBook, setSelectedBook] = useState(null);
 
   const openModal = (book) => {
     if (!book.available) {
-      setSelectedState(book);
+      setSelectedBook(book);
     }
   };
 
   const closeModal = () => {
-    setSelectedState(null);
+    setSelectedBook(null);
   };
 
   return (
@@ -60,9 +60,9 @@ export const LoansTable = ({ books, members }) => {
           </TableBody>
         </Table>
       </TableContainer>
-      {selectedState && (
+      {selectedBook && (
         <div className="contenedorModal__componente">
-          <LoanModal book={selectedState} onclose={closeModal} />
+          <LoanModal book={selectedBook} onclose={closeModal} />
         </div>
       )}
     </div>
