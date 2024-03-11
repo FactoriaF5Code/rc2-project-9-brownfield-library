@@ -1,5 +1,5 @@
-.btn-new-book {
-    width: 23rem;
+.btn-header {
+    width: auto;
     height: 4.5rem;
     background-color: var(--color-green);
     color: var(--color-mint);
@@ -8,8 +8,15 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.5s ease-in-out;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
 }
 
-.btn-new-book:hover {
+.btn-header:hover {
     background-color: var(--color-lightgreen);
+}
+
+.btn-header img {
+    margin: 0;
 }

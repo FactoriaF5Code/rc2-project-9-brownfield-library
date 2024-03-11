@@ -8,10 +8,22 @@ import {
   Paper,
 } from "@mui/material";
 import "./Table.css";
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 export const LoansTable = ({ books, members }) => {
   const tableHeaders = ["Title", "Member"];
+  const [selectedState, setSelectedState] = useState(null);
+
+  const openModal = (book) => {
+    if (!book.available) {
+      setSelectedState(book);
+    }
+  };
+
+  const closeModal = () => {
+    setSelectedState(null);
+  };
 
   return (
     <div className="table-container">
@@ -45,6 +57,11 @@ export const LoansTable = ({ books, members }) => {
           </TableBody>
         </Table>
       </TableContainer>
+      {selectedState && (
+        <div className="contenedorModal__componente">
+          <LoanModal book={selectedState} onclose={closeModal} />
+        </div>
+      )}
     </div>
   );
 };

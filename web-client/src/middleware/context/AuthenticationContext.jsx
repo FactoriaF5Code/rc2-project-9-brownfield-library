@@ -7,6 +7,7 @@ export const AuthenticationProvider = ({children}) => {
 
     const [userLoggedIn, setUserLoggedIn] = useState(false);
     const [userType, setUserType] = useState(null);
+    const [session, setSession] = useState({});
 
     const login = async (credentials) => {
         const authService = new AuthService();
@@ -15,9 +16,14 @@ export const AuthenticationProvider = ({children}) => {
         if (!(loginResponse.error === "true")) {
             setUserLoggedIn(true);
             setUserType(loginResponse.loginType);
+            setSession({...session, userName: loginResponse.session.userName || "curator" })
             return true;
         }
         return false;
+    }
+
+    const getSessionUserName = () => {
+        return session.userName;
     }
 
     const logout = () => {
@@ -26,6 +32,7 @@ export const AuthenticationProvider = ({children}) => {
 
     const value = {
         userLoggedIn,
+        getSessionUserName,
         login,
         logout
     }

@@ -12,7 +12,6 @@ public class Member {
     @Id
     private UUID id;
     private String firstName;
-
     private String lastName;
     private String address;
     private String email;

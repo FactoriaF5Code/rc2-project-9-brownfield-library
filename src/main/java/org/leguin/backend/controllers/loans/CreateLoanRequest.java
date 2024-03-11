@@ -5,6 +5,7 @@ public class CreateLoanRequest {
     private String bookId;
     private String memberId;
     
+    
     public String getId() {
         return id;
     }
@@ -14,9 +15,4 @@ public class CreateLoanRequest {
     public String getMemberId() {
         return memberId;
     }
-
-    
-
-    
-
 }

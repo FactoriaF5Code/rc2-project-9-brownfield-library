@@ -49,9 +49,16 @@ module.exports = (req, res, next) => {
     
     if (req.method === 'POST' && req.path === '/login') {
 
+        const { user } = req.body;
+
         return res.status(200).json({
-            loginType: "curator",
+            loginType: user === "curator@greenfield.com" ? "curator" : "member",
             error: null,
+            session: user === "curator@greenfield.com" ? {
+                userName: "curator"
+            } : {
+                userName: "Elena Moreno"
+            }
         });
 
     }
