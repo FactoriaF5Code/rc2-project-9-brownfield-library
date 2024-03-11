@@ -1,4 +1,5 @@
 {
+    "/api/loans/search": "/loanSearch",
     "/api/*": "/$1",
     "/auth/*": "/$1"
 }

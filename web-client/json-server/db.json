@@ -69,6 +69,22 @@
         "member": "Pepito Perez",
         "bookTitle": "Harry Potter y la Piedra Filosofal",
         "returnDate": "2024-04-01"
-      }
+  },
+
+  "loanSearch" : {
+    "results":[
+      {
+        "id": "c4a4e597-9aee-4b1e-92de-41d33224c6a",
+        "member": "Paco Perez",
+        "bookTitle": "Harry Potter y la Piedra Filosofal",
+        "returnDate": "2024-04-01"
+      },{
+        "id": "c4a4e597-9aee-4b1e-92de-41d33224c6a",
+        "member": "Paco Lopez",
+        "bookTitle": "Harry Potter y el prisionero de Azkaban",
+        "returnDate": "2024-04-01"
+    }
+    ]
+  }
   
 }
