@@ -58,3 +58,17 @@
   align-items: center;
 }
 
+.ReturnButton {
+  background-color: #11A468;
+  font-size: 16px;
+  color: white;
+  width: 140px; 
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 80px;
+  
+}
+
+
+

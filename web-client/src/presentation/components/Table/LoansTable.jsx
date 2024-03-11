@@ -10,19 +10,20 @@ import {
 import "./Table.css";
 import { useState } from "react";
 import PropTypes from "prop-types";
+import LoanModal from "../LoanModal/LoanModal";
 
 export const LoansTable = ({ books, members }) => {
   const tableHeaders = ["Title", "Member"];
-  const [selectedState, setSelectedState] = useState(null);
+  const [selectedBook, setSelectedBook] = useState(null);
 
   const openModal = (book) => {
     if (!book.available) {
-      setSelectedState(book);
+      setSelectedBook(book);
     }
   };
 
   const closeModal = () => {
-    setSelectedState(null);
+    setSelectedBook(null);
   };
 
   return (
@@ -39,8 +40,10 @@ export const LoansTable = ({ books, members }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {books.map((book, index) => (
-              <TableRow key={index}>
+            {books.map((book, index,{id,isbn,title,author,available}) => (
+              <TableRow key={index} onClick={() =>
+                openModal({ id, isbn, title, author, available })
+              }>
                 <TableCell className="table-cell">{book.title}</TableCell>
                 <TableCell className="table-cell">
                   <div className="cell-gap">
@@ -57,9 +60,9 @@ export const LoansTable = ({ books, members }) => {
           </TableBody>
         </Table>
       </TableContainer>
-      {selectedState && (
+      {selectedBook && (
         <div className="contenedorModal__componente">
-          <LoanModal book={selectedState} onclose={closeModal} />
+          <LoanModal book={selectedBook} onclose={closeModal} />
         </div>
       )}
     </div>
