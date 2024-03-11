@@ -47,6 +47,11 @@ export default function LoanModal({ book, onclose }) {
                   <h2>Return Date</h2>
                   <p>{loanInfo.returnDate}</p>
                 </div>
+                <div>
+                  <button className="ReturnButton">
+                    RETURN BOOK
+                  </button>
+                </div>
               </div>
             </div>
           </section>
