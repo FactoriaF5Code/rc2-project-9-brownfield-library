@@ -28,8 +28,7 @@ test("The curator page shows a button to create books", async () => {
 
 async function loginAsCurator() {
     await userEvent.click(screen.getByText("Curator access"));
-    await fill(/Email/, "severus@hogwarts.com");
-    await fill(/Password/, "voldemort4ever");
+    await fill(/Email/, "curator@greenfield.com");
+    await fill(/Password/, "pass4curator");
     await userEvent.click(screen.getByText(/Login/));
 }
-

@@ -1,42 +1,69 @@
 header {
-    background-color: var(--color-mint)!important;
-    padding:40px 60px;
+  background-color: var(--color-mint) !important;
+  padding: 40px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-header img{
-    max-width: 300px;
-    margin-bottom: 1.5rem;
+header img {
+  max-width: 300px;
+  margin-bottom: 1.5rem;
 }
 
-header h1{
-    color: var(--color-darkgreen);
-    font-size: 14px;
-    font-weight: 400;
-}header {
-    background-color: var(--color-mint)!important;
-    padding:40px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header img{
-    max-width: 300px;
-    margin-bottom: 1.5rem;
-}
-
-header h1{
-    color: var(--color-darkgreen);
-    font-size: 14px;
-    font-weight: 400;
+header h1 {
+  color: var(--color-darkgreen);
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .backButton {
-    color: var(--color-darkgreen);
-    font-size: 1.5rem;
-    text-decoration: underline;
+  color: var(--color-darkgreen);
+  font-size: 1.5rem;
+  text-decoration: underline;
 }
 
-.backButton:hover{
-    color:var(--color-green);
+.backButton:hover {
+  color: var(--color-green);
+}
+
+.btn-header {
+  width: auto;
+  height: 4.5rem;
+  background-color: var(--color-green);
+  color: var(--color-mint);
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.btn-header:hover {
+  background-color: var(--color-lightgreen);
+}
+
+.btn-header img {
+  margin: 0;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-header .user-name {
+  color: var(--color-darkgreen);
+  font-size: 1.8rem;
+  line-height: 4.5rem;
+}
+
+.nav-header .user-btns {
+    display: flex;
+    gap: 15px;
 }

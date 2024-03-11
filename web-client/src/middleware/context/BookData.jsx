@@ -2,13 +2,16 @@ import { createContext, useContext } from "react";
 import { BookService } from "../../services/BookService";
 import { LoanService } from "../../services/LoanService";
 import { PropTypes } from 'prop-types';
+import { useAuthenticationContext } from "./AuthenticationContext";
 const BookDataContext = createContext();
 
 export const BookDataProvider = ({ children }) => {
 
+  const { getAuthenticationHeader } = useAuthenticationContext();
+
   const searchBooks = async (query) => {
     const bookService = new BookService();
-    return bookService.searchBooks(query);
+    return bookService.searchBooks(query, getAuthenticationHeader());
   };
 
   const availableBooks = async (query) => {
@@ -18,12 +21,21 @@ export const BookDataProvider = ({ children }) => {
 
   const createBook = async (bookRequest) => {
     const bookService = new BookService();
-    return bookService.createBook(bookRequest);
+    return bookService.createBook(bookRequest, getAuthenticationHeader());
   };
 
   const createLoan = async (loanRequest) => {
     const loanService = new LoanService();
-    return loanService.createLoan(loanRequest);
+    return loanService.createLoan(loanRequest, getAuthenticationHeader());
+  }
+  const searchLoanInfo = async (bookId) => {
+    const bookService = new BookService();
+    return bookService.searchLoanInfo(bookId);
+  }
+  
+  const searchLoans = async (loanResponse) => {
+    const loanService = new LoanService();
+    return loanService.searchLoan(loanResponse, getAuthenticationHeader());
   }
 
   const value = {
@@ -31,6 +43,8 @@ export const BookDataProvider = ({ children }) => {
     searchBooks,
     createBook,
     createLoan,
+    searchInfoLoan: searchLoanInfo,
+    searchLoans
   };
 
   return <BookDataContext.Provider value={value}>{children}</BookDataContext.Provider>;

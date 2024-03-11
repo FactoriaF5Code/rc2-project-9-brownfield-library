@@ -25,7 +25,7 @@ Before starting:
 To compile and run the application, do
 
 ```
-mvn -Pdev clean install spring-boot:run
+
 ```
 
 It will show the application running at `localhost:8080`
