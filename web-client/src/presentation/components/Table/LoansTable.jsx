@@ -10,6 +10,7 @@ import {
 import "./Table.css";
 import { useState } from "react";
 import PropTypes from "prop-types";
+import LoanModal from "../LoanModal/LoanModal";
 
 export const LoansTable = ({ books, members }) => {
   const tableHeaders = ["Title", "Member"];
@@ -39,8 +40,10 @@ export const LoansTable = ({ books, members }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {books.map((book, index) => (
-              <TableRow key={index}>
+            {books.map((book, index,{id,isbn,title,author,available}) => (
+              <TableRow key={index} onClick={() =>
+                openModal({ id, isbn, title, author, available })
+              }>
                 <TableCell className="table-cell">{book.title}</TableCell>
                 <TableCell className="table-cell">
                   <div className="cell-gap">
