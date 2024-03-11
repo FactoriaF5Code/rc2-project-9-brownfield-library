@@ -8,8 +8,8 @@ export class BookService {
             .then(response => response.data.results);
     }
 
-    async avaliableBooks(query) {
-        return axios.get(`${getApiHost()}/api/books/available?q=${query}`)
+    async availableBooks(query) {
+        return axios.get(`${getApiHost()}/api/books/available?q=${query}&available=true`)
             .then(response => response.data.results);
     }
 
