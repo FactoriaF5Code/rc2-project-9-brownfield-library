@@ -31,11 +31,23 @@ public class BookController {
 
     @GetMapping
     public BookSearchResponse searchBooks(@RequestParam(name = "q", required = true) String query) {
-        var bookResults = bookSearch.searchBooks(query).stream()
+        var bookResults = bookSearch.searchBooks(query)
+                .stream()
                 .map(this::responseFromBook)
                 .collect(Collectors.toList());
         return new BookSearchResponse(bookResults);
     }
+
+    @GetMapping /*("/api/books/available")*/
+    public BookSearchResponse availableBooks(@RequestParam(name = "q", required = true) String query) {
+        var bookResults = bookSearch.searchBooks(query)
+                .stream()
+                .filter(book -> book.isAvailable())
+                .map(this::responseFromBook)
+                .collect(Collectors.toList());
+        return new BookSearchResponse(bookResults);
+    }
+    
 
     @PostMapping
     public CreateBookResponse createBook(@RequestBody CreateBookRequest request) {

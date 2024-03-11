@@ -20,6 +20,7 @@ export const EditLoan = () => {
     const navigate = useNavigate();
 
     const { searchBooks } = useBookDataContext();
+    const { availableBooks} = useBookDataContext();
     const { searchMembers } = useMemberDataContext();
     const { createLoan } = useBookDataContext();
 
@@ -39,7 +40,7 @@ export const EditLoan = () => {
     }
 
     const loadBookOptions = (input) =>
-        searchBooks(input)
+        availableBooks(input)
             .then(results => results.map(b => ({
                 label: `${b.title} (${b.author})`,
                 value: b.id

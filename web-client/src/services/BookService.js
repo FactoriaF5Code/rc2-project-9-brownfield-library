@@ -8,9 +8,15 @@ export class BookService {
             .then(response => response.data.results);
     }
 
+    async avaliableBooks(query) {
+        return axios.get(`${getApiHost()}/api/books?q=${query}`)
+            .then(response => response.data.results);
+    }
+
     async createBook(bookRequest) {
         return axios.post(`${getApiHost()}/api/books`, bookRequest)
             .then(response => response.data.msg)
     }
+
 
 }
