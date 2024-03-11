@@ -118,17 +118,3 @@ public class LoanController {
         return new LoanInfoSearchResponse(results);
     }
 }
-
-// @GetMapping("/search")
-// // GET /api/loans/search?m="Paco"
-// public List<LoanInfo> findLoanByMemberName(@RequestParam(name = "m", required
-// = true) String memberName) {
-// // preguntar al repo de members si existe un member que contenga el nombre
-// // memberName
-// // [member1,member2,member3]
-// // para cada uno de los resultados nos quedamos con el ID
-// // [memberId1,memberId2,memberId3]
-// // sacar del loanRepository todos los prestamos que tengan que ver con estos
-// id
-// // [loanInfo1, loanInfo2,loanInfo3]
-// }
