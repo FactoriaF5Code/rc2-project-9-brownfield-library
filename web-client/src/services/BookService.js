@@ -9,7 +9,7 @@ export class BookService {
     }
 
     async avaliableBooks(query) {
-        return axios.get(`${getApiHost()}/api/books?q=${query}`)
+        return axios.get(`${getApiHost()}/api/books/available?q=${query}`)
             .then(response => response.data.results);
     }
 
