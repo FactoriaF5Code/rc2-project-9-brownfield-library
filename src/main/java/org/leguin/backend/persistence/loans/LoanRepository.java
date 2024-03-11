@@ -12,4 +12,5 @@ public interface LoanRepository extends JpaRepository<Loan, UUID> {
     Optional<Loan> findByBookId(UUID bookId);
 
     List<Loan> findByMemberId(UUID memberId);
+    
 }

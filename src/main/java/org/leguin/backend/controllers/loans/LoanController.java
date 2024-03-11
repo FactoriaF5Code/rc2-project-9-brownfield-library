@@ -1,5 +1,8 @@
 package org.leguin.backend.controllers.loans;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -19,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 
 @RestController
 @RequestMapping("/api/loans")
@@ -65,14 +67,13 @@ public class LoanController {
             return ResponseEntity.badRequest().build();
         }
 
-
         bookAvailabilityService.setAsNotAvailable(UUID.fromString(request.getBookId()));
-    
+
         return ResponseEntity.ok(new CreateLoanResponse(request.getId()));
-    }            
+    }
 
     @GetMapping
-    public ResponseEntity<LoanInfoResponse> getLoanInfoResponse(@RequestParam(name="bookId") String bookId) {
+    public ResponseEntity<LoanInfoResponse> getLoanInfoResponse(@RequestParam(name = "bookId") String bookId) {
         Optional<Loan> loanOptional = loanRepository.findByBookId(UUID.fromString(bookId));
 
         if (loanOptional.isPresent()) {
@@ -80,15 +81,54 @@ public class LoanController {
             Optional<Member> memberOptional = memberRepository.findById(loan.getMemberId());
             if (memberOptional.isPresent()) {
                 Member member = memberOptional.get();
+                String bookTitle = bookRepository.findById(UUID.fromString(bookId)).get().getTitle();
                 return ResponseEntity.ok(
                         new LoanInfoResponse(
                                 member.getFirstName(),
                                 member.getLastName(),
-                                loan.getEndDate()));
+                                loan.getEndDate(),
+                                bookTitle));
             }
         }
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/search")
+    public LoanInfoSearchResponse getLoanInfo(@RequestParam(name = "m", required = true) String memberName) {
+
+        
+
+        List<LoanInfoResponse> results = new ArrayList<>(); 
+
+        List<Member> members = memberRepository.findByFirstNameContaining(memberName);
+
+
+        // para cada uno de los resultados nos quedamos con el ID
+        for (Member member : members) {
+            UUID memberId = member.getId();
+            var loans = loanRepository.findByMemberId(memberId);
+            for (Loan loan : loans) {
+                LocalDate endDate = loan.getEndDate();
+                String title = bookRepository.findById(loan.getBookId()).get().getTitle();
+                var loanInfoResponse = new LoanInfoResponse(member.getFirstName(), member.getLastName(), endDate, title);
+                results.add(loanInfoResponse);
+            }
+        }
+
+        return new LoanInfoSearchResponse(results);
+    }
 }
 
-
+// @GetMapping("/search")
+// // GET /api/loans/search?m="Paco"
+// public List<LoanInfo> findLoanByMemberName(@RequestParam(name = "m", required
+// = true) String memberName) {
+// // preguntar al repo de members si existe un member que contenga el nombre
+// // memberName
+// // [member1,member2,member3]
+// // para cada uno de los resultados nos quedamos con el ID
+// // [memberId1,memberId2,memberId3]
+// // sacar del loanRepository todos los prestamos que tengan que ver con estos
+// id
+// // [loanInfo1, loanInfo2,loanInfo3]
+// }
