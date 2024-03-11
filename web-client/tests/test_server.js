@@ -32,7 +32,12 @@ const handlers = [
 
         return HttpResponse.json({
             error: null,
-            loginType: user === "curator@greenfield.com" ? "curator" : "member"
+            loginType: user === "curator@greenfield.com" ? "curator" : "member",
+            session: user === "curator@greenfield.com" ? {
+                userName: "curator"
+            } : {
+                userName: "Elena Moreno"
+            }
         });
     })
 ];

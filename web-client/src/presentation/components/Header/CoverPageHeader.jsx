@@ -10,7 +10,7 @@ export const CoverPageHeader = () => {
           <Link to="/">
             <img src={logo} alt="Greenfield Library logo" />
           </Link>
-          <h1>Powered by Brownfield MegaCorporation Inc</h1>
+          <h1>Powered by © Brownfield MegaCorporation</h1>
         </div>
       </header>
     </>

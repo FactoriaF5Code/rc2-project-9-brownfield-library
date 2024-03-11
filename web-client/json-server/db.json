@@ -1,4 +1,9 @@
 {
+  "loans": {
+    "id" : "098765",
+    "member": "Ada Colau",
+    "returnDate": "2024-03-14"
+  },
   "books": {
     "results": [
       {
@@ -10,12 +15,20 @@
         "available": true
       },
       {
-        "id": "68ec1461-7914-4ac0-9600-1c6921cf0788",
-        "title": "Tercer libro de ejemplo (Luis)",
+        "id": "68ec1461-7914-4ac0-9600-1c6921cf078d",
+        "title": "El peor libro de la historia",
         "author": "Autor de ejemplo",
         "year": "1999",
         "isbn": "9827365",
         "available": false
+      },
+      {
+        "id": "68ec1461-7914-4ac0-9600-1c6921cf078d",
+        "title": "El mejor libro de la historia",
+        "author": "Autor de ejemplo",
+        "year": "1999",
+        "isbn": "9827365",
+        "available": true
       },
       {
         "id": "68ec1461-7914-4ac0-9600-1c6921cf0799",
@@ -38,6 +51,14 @@
         "phone": "1234567890"
       },
       {
+        "id": "a0ecb47e-9e0b-4c86-8d69-9a2f46146b15",
+        "firstName": "Paco",
+        "lastName": "Merte",
+        "address": "123 Calle Principal, Ciudad",
+        "email": "paco.merte@email.com",
+        "phone": "1234567890"
+      },
+      {
         "id": "a0ecb47e-9e0b-4c86-8d69-9a2f46146b16",
         "firstName": "Luis",
         "lastName": "Madrid",
@@ -57,5 +78,4 @@
       }
     ]
   }
-
 }

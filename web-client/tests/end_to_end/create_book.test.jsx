@@ -32,11 +32,3 @@ async function loginAsCurator() {
     await fill(/Password/, "pass4curator");
     await userEvent.click(screen.getByText(/Login/));
 }
-
-
-async function loginAsMember() {
-    await userEvent.click(screen.getByText("Member access"));
-    await fill(/Email/, "member@email.com");
-    await fill(/Password/, "pass4member");
-    await userEvent.click(screen.getByText(/Login/));
-}

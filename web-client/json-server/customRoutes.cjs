@@ -54,6 +54,11 @@ module.exports = (req, res, next) => {
         return res.status(200).json({
             loginType: user === "curator@greenfield.com" ? "curator" : "member",
             error: null,
+            session: user === "curator@greenfield.com" ? {
+                userName: "curator"
+            } : {
+                userName: "Elena Moreno"
+            }
         });
 
     }
