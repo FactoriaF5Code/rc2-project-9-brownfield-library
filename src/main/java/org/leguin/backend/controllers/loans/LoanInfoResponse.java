@@ -5,10 +5,16 @@ import java.time.LocalDate;
 public class LoanInfoResponse {
     private String member;
     private String returnDate;
+    private String bookTitle;
 
-    public LoanInfoResponse(String firstName, String lastName, LocalDate returnDate) {
+    public String getBookTitle() {
+        return bookTitle;
+    }
+
+    public LoanInfoResponse(String firstName, String lastName, LocalDate returnDate, String bookTitle) {
         this.member = firstName + " " + lastName;
         this.returnDate = returnDate.toString();
+        this.bookTitle = bookTitle;
     }
 
     public String getReturnDate() {

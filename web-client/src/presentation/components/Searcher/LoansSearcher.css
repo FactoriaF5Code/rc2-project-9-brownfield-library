@@ -1,0 +1,16 @@
+.loansSearchContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 90rem !important;
+}
+
+.searchContainer__Field{
+    width: 88rem !important;
+}
+
+.loansTitle{
+    font-size: 3rem;
+    color: var(--color-darkgreen);
+    text-align: center;
+}

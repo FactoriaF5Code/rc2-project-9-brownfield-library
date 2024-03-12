@@ -1,3 +1,19 @@
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+}
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 4rem;
+  
+
+}
 .toastMessage {
   position: fixed;
   bottom: 20px;
@@ -11,6 +27,7 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 9999;
   animation: slideIn 0.6s ease-in-out forwards, fadeOut 6s ease-in-out forwards;
+  
 }
 
 @keyframes slideIn {

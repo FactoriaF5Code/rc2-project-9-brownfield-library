@@ -2,10 +2,6 @@ package org.leguin.backend.persistence.loans;
 
 import java.time.LocalDate;
 import java.util.UUID;
-
-import org.leguin.backend.services.DateService;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;

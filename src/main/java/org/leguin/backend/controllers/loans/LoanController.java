@@ -1,5 +1,8 @@
 package org.leguin.backend.controllers.loans;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -19,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 
 @RestController
 @RequestMapping("/api/loans")
@@ -45,7 +47,6 @@ public class LoanController {
     }
 
     @PostMapping
-
     public ResponseEntity<CreateLoanResponse> createLoan(@RequestBody CreateLoanRequest request) {
         if (!bookRepository.existsById(UUID.fromString(request.getBookId()))) {
             return ResponseEntity.badRequest()
@@ -62,32 +63,57 @@ public class LoanController {
     loanRepository.save(loan);
 
 
-    bookAvailabilityService.setAsNotAvailable(UUID.fromString(request.getBookId()));
+        bookAvailabilityService.setAsNotAvailable(UUID.fromString(request.getBookId()));
 
-    return ResponseEntity.ok(new CreateLoanResponse(request.getId()));
-}        
+        return ResponseEntity.ok(new CreateLoanResponse(request.getId()));
+    }
 
-       
 
     @GetMapping
-    public ResponseEntity<LoanInfoResponse> getLoanInfoResponse(@RequestParam(name="bookId") String bookId) {
+    public ResponseEntity<LoanInfoResponse> getLoanInfoResponse(@RequestParam(name = "bookId") String bookId) {
         Optional<Loan> loanOptional = loanRepository.findByBookId(UUID.fromString(bookId));
 
         if (loanOptional.isPresent()) {
             Loan loan = loanOptional.get();
-            Optional<User> userOptional = userRepository.findById(loan.getMemberId());
-            if (userOptional.isPresent()) {
-                User user = userOptional.get();
-                return ResponseEntity.ok(
-                        new LoanInfoResponse(
-                                user.getFirstName(),
-                                user.getLastName(),
-                                loan.getEndDate()));
+            Optional<User> memberOptional = userRepository.findById(loan.getMemberId());
+            if (memberOptional.isPresent()) {
+                User member = memberOptional.get();
+                Optional<Book> optionalBook = bookRepository.findById(UUID.fromString(bookId));
+                if (optionalBook.isPresent()) {
+                    String bookTitle = optionalBook.get().getTitle();
+
+                    return ResponseEntity.ok(
+                            new LoanInfoResponse(
+                                    member.getFirstName(),
+                                    member.getLastName(),
+                                    loan.getEndDate(),
+                                    bookTitle));
+                }
             }
         }
         return ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/search")
+    public LoanInfoSearchResponse getLoanInfo(@RequestParam(name = "m", required = true) String memberName) {
+
+        List<LoanInfoResponse> results = new ArrayList<>();
+
+        List<User> members = userRepository.findByFirstNameContaining(memberName);
+
+        // para cada uno de los resultados nos quedamos con el ID
+        for (User member : members) {
+            UUID memberId = member.getId();
+            var loans = loanRepository.findByMemberId(memberId);
+            for (Loan loan : loans) {
+                LocalDate endDate = loan.getEndDate();
+                String title = bookRepository.findById(loan.getBookId()).get().getTitle();
+                var loanInfoResponse = new LoanInfoResponse(member.getFirstName(), member.getLastName(), endDate,
+                        title);
+                results.add(loanInfoResponse);
+            }
+        }
+
+        return new LoanInfoSearchResponse(results);
+    }
 }
-
-

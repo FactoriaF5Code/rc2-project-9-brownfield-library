@@ -16,7 +16,9 @@ import MemberLogin from '../../presentation/pages/login/MemberLogin';
 import { MemberManager } from '../../presentation/pages/member_manager/MemberManager';
 import { EditMember } from "../../presentation/pages/member_manager/EditMember";
 import { EditLoan } from '../../presentation/pages/loan_manager/EditLoan';
-import { MembersLoan } from "../../presentation/pages/MembersLoan/MembersLoan";
+import { LoansSearcher} from '../../presentation/components/Searcher/LoansSearcher'
+import { MembersLoan } from '../../presentation/pages/MembersLoan/MembersLoan'
+import { MenuLoans } from "../../presentation/pages/menu_loans/MenuLoans";
 
 export const AppRouter = () => {
   return (
@@ -30,9 +32,13 @@ export const AppRouter = () => {
             <Route index element={<CuratorHome />} />
             <Route path="books" element={<BookSearcher />} />
             <Route path="books/new" element={<NewBookForm />} />
+            {/* <Route path="books/:id" element={<BookDetailsPage />} /> */}
             <Route path="members" element={<MemberManager />} />
             <Route path="members/new" element={<EditMember />} />
+            {/* nuevo préstamo */}
+            <Route path="loans" element={<MenuLoans />} />
             <Route path="loans/new" element={<EditLoan />} />
+            <Route path="loans/search" element={<LoansSearcher />} />
           </Route>
         </Route>
         <Route path="/members/" element={<MemberPortal />}>
@@ -43,10 +49,9 @@ export const AppRouter = () => {
             <Route path="/members/books" element={<BookSearcher />} />
             <Route path="loans" element={<MembersLoan />} />
           </Route>
-
         </Route>
       </Routes>
       {developmentModeOn && <CurrentRouterComponent />}
     </BrowserRouter>
   );
-}
+};
