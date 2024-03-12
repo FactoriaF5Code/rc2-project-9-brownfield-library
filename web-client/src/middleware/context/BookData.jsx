@@ -16,7 +16,7 @@ export const BookDataProvider = ({ children }) => {
 
   const availableBooks = async (query) => {
     const bookService = new BookService();
-    return bookService.availableBooks(query);
+    return bookService.availableBooks(query, getAuthenticationHeader());
   };
 
   const createBook = async (bookRequest) => {
@@ -30,7 +30,7 @@ export const BookDataProvider = ({ children }) => {
   }
   const searchLoanInfo = async (bookId) => {
     const bookService = new BookService();
-    return bookService.searchLoanInfo(bookId);
+    return bookService.searchLoanInfo(bookId, getAuthenticationHeader());
   }
   
   const searchLoans = async (loanResponse) => {
