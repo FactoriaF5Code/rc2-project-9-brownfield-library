@@ -81,13 +81,17 @@ public class LoanController {
             Optional<Member> memberOptional = memberRepository.findById(loan.getMemberId());
             if (memberOptional.isPresent()) {
                 Member member = memberOptional.get();
-                String bookTitle = bookRepository.findById(UUID.fromString(bookId)).get().getTitle();
-                return ResponseEntity.ok(
-                        new LoanInfoResponse(
-                                member.getFirstName(),
-                                member.getLastName(),
-                                loan.getEndDate(),
-                                bookTitle));
+                Optional<Book> optionalBook = bookRepository.findById(UUID.fromString(bookId));
+                if (optionalBook.isPresent()) {
+                    String bookTitle = optionalBook.get().getTitle();
+
+                    return ResponseEntity.ok(
+                            new LoanInfoResponse(
+                                    member.getFirstName(),
+                                    member.getLastName(),
+                                    loan.getEndDate(),
+                                    bookTitle));
+                }
             }
         }
         return ResponseEntity.notFound().build();
@@ -96,12 +100,9 @@ public class LoanController {
     @GetMapping("/search")
     public LoanInfoSearchResponse getLoanInfo(@RequestParam(name = "m", required = true) String memberName) {
 
-        
-
-        List<LoanInfoResponse> results = new ArrayList<>(); 
+        List<LoanInfoResponse> results = new ArrayList<>();
 
         List<Member> members = memberRepository.findByFirstNameContaining(memberName);
-
 
         // para cada uno de los resultados nos quedamos con el ID
         for (Member member : members) {
@@ -110,7 +111,8 @@ public class LoanController {
             for (Loan loan : loans) {
                 LocalDate endDate = loan.getEndDate();
                 String title = bookRepository.findById(loan.getBookId()).get().getTitle();
-                var loanInfoResponse = new LoanInfoResponse(member.getFirstName(), member.getLastName(), endDate, title);
+                var loanInfoResponse = new LoanInfoResponse(member.getFirstName(), member.getLastName(), endDate,
+                        title);
                 results.add(loanInfoResponse);
             }
         }
