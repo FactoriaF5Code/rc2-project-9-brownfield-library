@@ -13,8 +13,13 @@ export class BookService {
             .then(response => response.data.results);
     }
 
-    async availableBooks(query) {
-        return axios.get(`${getApiHost()}/api/books/available?q=${query}&available=true`)
+    async availableBooks(query, authenticationHeader) {
+        const config = {
+            headers: {
+                "Authorization": authenticationHeader
+            }
+        }
+        return axios.get(`${getApiHost()}/api/books/available?q=${query}&available=true`, config)
             .then(response => response.data.results);
     }
 
@@ -29,8 +34,13 @@ export class BookService {
             .then(response => response.data.msg)
     }
 
-    async searchLoanInfo(id) {
-        return axios.get(`${getApiHost()}/api/loans?bookId=${id}`)
+    async searchLoanInfo(id, authenticationHeader) {
+        const config = {
+            headers: {
+                "Authorization": authenticationHeader
+            }
+        }
+        return axios.get(`${getApiHost()}/api/loans?bookId=${id}`, config)
         .then(response => response.data)
     }
 
