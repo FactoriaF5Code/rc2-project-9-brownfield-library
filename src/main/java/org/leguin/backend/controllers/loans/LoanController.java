@@ -45,6 +45,7 @@ public class LoanController {
     }
 
     @PostMapping
+
     public ResponseEntity<CreateLoanResponse> createLoan(@RequestBody CreateLoanRequest request) {
         if (!bookRepository.existsById(UUID.fromString(request.getBookId()))) {
             return ResponseEntity.badRequest()
@@ -57,19 +58,16 @@ public class LoanController {
                 UUID.fromString(request.getMemberId()),
                 dateService.currentDate(),
                 dateService.currentDate().plusDays(30));
-
-        loanRepository.save(loan);
-
-        Book book = bookRepository.findById(UUID.fromString(request.getBookId())).get();
-        if (!book.isAvailable()) {
-            return ResponseEntity.badRequest().build();
-        }
+  
+    loanRepository.save(loan);
 
 
-        bookAvailabilityService.setAsNotAvailable(UUID.fromString(request.getBookId()));
-    
-        return ResponseEntity.ok(new CreateLoanResponse(request.getId()));
-    }            
+    bookAvailabilityService.setAsNotAvailable(UUID.fromString(request.getBookId()));
+
+    return ResponseEntity.ok(new CreateLoanResponse(request.getId()));
+}        
+
+       
 
     @GetMapping
     public ResponseEntity<LoanInfoResponse> getLoanInfoResponse(@RequestParam(name="bookId") String bookId) {
@@ -89,6 +87,7 @@ public class LoanController {
         }
         return ResponseEntity.notFound().build();
     }
+
 }
 
 

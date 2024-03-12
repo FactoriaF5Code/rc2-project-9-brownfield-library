@@ -14,6 +14,11 @@ export const BookDataProvider = ({ children }) => {
     return bookService.searchBooks(query, getAuthenticationHeader());
   };
 
+  const availableBooks = async (query) => {
+    const bookService = new BookService();
+    return bookService.availableBooks(query);
+  };
+
   const createBook = async (bookRequest) => {
     const bookService = new BookService();
     return bookService.createBook(bookRequest, getAuthenticationHeader());
@@ -34,6 +39,7 @@ export const BookDataProvider = ({ children }) => {
   }
 
   const value = {
+    availableBooks,
     searchBooks,
     createBook,
     createLoan,

@@ -13,6 +13,12 @@ export class BookService {
             .then(response => response.data.results);
     }
 
+    async availableBooks(query) {
+        return axios.get(`${getApiHost()}/api/books/available?q=${query}&available=true`)
+            .then(response => response.data.results);
+    }
+
+
     async createBook(bookRequest, authenticationHeader) {
         const config = {
             headers: {
@@ -27,5 +33,6 @@ export class BookService {
         return axios.get(`${getApiHost()}/api/loans?bookId=${id}`)
         .then(response => response.data)
     }
+
 
 }

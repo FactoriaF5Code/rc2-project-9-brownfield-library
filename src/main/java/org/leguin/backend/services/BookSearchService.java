@@ -25,4 +25,8 @@ public class BookSearchService {
         return repository.existsById(UUID.fromString(bookId));
     }
 
+    public List<Book> availableBooks(Boolean boolean1, String query) {
+        return repository.findByTitleContaining(query);
+    }
+
 }
