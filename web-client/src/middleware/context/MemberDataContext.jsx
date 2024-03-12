@@ -1,17 +1,20 @@
 import { createContext, useContext } from "react";
 import { MemberService } from '../../services/MemberService';
+import { useAuthenticationContext } from "./AuthenticationContext";
 
 const MemberDataContext = createContext();
 
+
 export const MemberDataProvider = ({ children }) => {
+    const { getAuthenticationHeader } = useAuthenticationContext();
     const memberService = new MemberService();
 
     const searchMembers = async (query) => {
-        return memberService.searchMembers(query);
+        return memberService.searchMembers(query, getAuthenticationHeader());
     }
 
     const createMember = async (memberRequest) => {
-        return memberService.createMember(memberRequest);
+        return memberService.createMember(memberRequest, getAuthenticationHeader());
     }
 
     const value = {

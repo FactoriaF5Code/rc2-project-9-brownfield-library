@@ -7,7 +7,7 @@ import java.util.UUID;
 import org.leguin.backend.controllers.loans.LoanInfoResponse;
 import org.leguin.backend.persistence.loans.Loan;
 import org.leguin.backend.persistence.loans.LoanRepository;
-import org.leguin.backend.persistence.members.MemberRepository;
+import org.leguin.backend.persistence.members.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ public class LoanService {
     @Autowired
     private LoanRepository loanRepository;
     @Autowired
-    private MemberRepository memberRepository;
+    private UserRepository userRepository;
 
     // public LoanInfoResponse findLoanInfoResponse(UUID bookId, UUID memberId) {
     //     List<Loan> loans = loanRepository.findByBookId(bookId);

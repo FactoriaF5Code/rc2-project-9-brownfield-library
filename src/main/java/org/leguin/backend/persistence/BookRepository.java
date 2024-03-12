@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BookRepository extends JpaRepository<Book, UUID> {
     List<Book> findByTitleContaining(String query);
+
+    List<Book> findByTitleLikeAndAvailable(String string, boolean b);
 }

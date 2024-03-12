@@ -7,11 +7,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+
 @Repository
-public interface MemberRepository extends JpaRepository<Member, UUID> {
-    List<Member> findByEmail(String email);
 
-    Optional<Member> findById(UUID id);
+public interface UserRepository extends JpaRepository<User, UUID>{
+    List<User> findByEmail(String email);    
+    Optional<User> findById(UUID id);
 
-    List<Member> findByFirstNameContaining(String name);
+    List<User> findByFirstNameContaining(String name);
+
 }

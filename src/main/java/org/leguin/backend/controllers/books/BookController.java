@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.stream.Collectors;
 
 import org.leguin.backend.persistence.Book;
+import org.leguin.backend.persistence.BookRepository;
 import org.leguin.backend.services.BookCreationService;
 import org.leguin.backend.services.BookSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -21,6 +24,7 @@ public class BookController {
 
     private BookSearchService bookSearch;
     private BookCreationService bookCreation;
+    private BookRepository bookRepository;
 
     public BookController(
             @Autowired BookSearchService bookSearchService,
@@ -31,7 +35,18 @@ public class BookController {
 
     @GetMapping
     public BookSearchResponse searchBooks(@RequestParam(name = "q", required = true) String query) {
-        var bookResults = bookSearch.searchBooks(query).stream()
+        var bookResults = bookSearch.searchBooks(query)
+                .stream()
+                .map(this::responseFromBook)
+                .collect(Collectors.toList());
+        return new BookSearchResponse(bookResults);
+    }
+
+    @GetMapping("/available")
+    public BookSearchResponse availableBooks(@RequestParam(name = "q", required = true) String query) {
+        var bookResults = bookSearch.searchBooks(query)
+                .stream()
+                .filter(book -> book.isAvailable())
                 .map(this::responseFromBook)
                 .collect(Collectors.toList());
         return new BookSearchResponse(bookResults);
@@ -60,5 +75,5 @@ public class BookController {
                 book.getYear(),
                 book.isAvailable());
     }
-    
+
 }

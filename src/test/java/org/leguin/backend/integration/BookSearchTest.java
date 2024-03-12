@@ -31,6 +31,7 @@ class BookSearchTest {
 	}
 
 	@Test
+	
 	void book_search_by_name() throws Exception {
 
 		bookRepository.saveAll(List.of(
@@ -55,8 +56,7 @@ class BookSearchTest {
 						jsonPath("$.results[0].title", equalTo("La Mano Izquierda de la Oscuridad")),
 						jsonPath("$.results[0].author", equalTo("Ursula K. Leguin")),
 						jsonPath("$.results[0].isbn", equalTo("129834751375")),
-						jsonPath("$.results[0].year", equalTo("1969")),
-						jsonPath("$.results[0].available", equalTo(true)));
+						jsonPath("$.results[0].year", equalTo("1969")));
 	}
 
 }

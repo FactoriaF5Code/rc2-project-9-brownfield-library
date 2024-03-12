@@ -11,8 +11,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.leguin.backend.persistence.Book;
 import org.leguin.backend.persistence.BookRepository;
-import org.leguin.backend.persistence.members.Member;
-import org.leguin.backend.persistence.members.MemberRepository;
+import org.leguin.backend.persistence.members.User;
+import org.leguin.backend.persistence.members.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -24,7 +24,7 @@ public class CreateLoanTest {
         private MockMvc api;
 
         @Autowired
-        private MemberRepository memberRepository;
+        private UserRepository userRepository;
 
         @Autowired
         private BookRepository bookRepository;
@@ -33,8 +33,8 @@ public class CreateLoanTest {
         @DisplayName("create a loan")
         public void createLoan() throws Exception {
 
-                memberRepository.save(
-                                new Member(
+                userRepository.save(
+                                new User(
                                                 UUID.fromString("a0ecb47e-9e0b-4c86-8d69-9a2f46146b15"),
                                                 "Juan",
                                                 "Pérez",
@@ -69,8 +69,8 @@ public class CreateLoanTest {
         @DisplayName("Cant create a new loan if books do not exist")
         public void notCreateLoan() throws Exception {
 
-                memberRepository.save(
-                                new Member(
+                userRepository.save(
+                                new User(
                                                 UUID.fromString("a0ecb47e-9e0b-4c86-8d69-9a2f46146b15"),
                                                 "Juan",
                                                 "Pérez",

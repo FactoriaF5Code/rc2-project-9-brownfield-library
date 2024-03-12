@@ -12,8 +12,8 @@ import org.leguin.backend.persistence.Book;
 import org.leguin.backend.persistence.BookRepository;
 import org.leguin.backend.persistence.loans.Loan;
 import org.leguin.backend.persistence.loans.LoanRepository;
-import org.leguin.backend.persistence.members.Member;
-import org.leguin.backend.persistence.members.MemberRepository;
+import org.leguin.backend.persistence.members.User;
+import org.leguin.backend.persistence.members.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -31,7 +31,7 @@ public class GetLoansByUserSearchTest {
         LoanRepository loanRepository;
 
         @Autowired
-        MemberRepository memberRepository;
+        UserRepository memberRepository;
 
         @Autowired
         BookRepository bookRepository;
@@ -41,7 +41,7 @@ public class GetLoansByUserSearchTest {
         public void test_loan_info_for_user_name() throws Exception {
 
                 memberRepository.saveAll(List.of(
-                                new Member(
+                                new User(
                                                 UUID.fromString("089535e3-01f9-4463-93fa-e66cc67193f5"),
                                                 "Paco",
                                                 "Pérez",
@@ -49,7 +49,7 @@ public class GetLoansByUserSearchTest {
                                                 "loquesea",
                                                 "loquesea",
                                                 "loquesea"),
-                                new Member(
+                                new User(
                                                 UUID.fromString("089535e3-01f9-4463-93fa-e66cc67193f4"),
                                                 "Paco",
                                                 "Lopez",
